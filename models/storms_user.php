@@ -38,11 +38,19 @@ class storms_user {
         $this->roles = array();
     }
     
+    /**
+     *
+     * To make it easier to check authentivation, we'll just let the controller pass what it needs and return if it worked or not...don't really want to tell the hacker why it failed...
+     * 
+     * @param type $user A non-hashed string of what the user is submitting
+     * @param type $pass A non-hashed password string
+     * @return type 
+     */
     public function auth($user, $pass){
         $this->user = MD5($user);
         $this->pass = MD5($pass);
         
-        return $this->check_auth_db();
+        return $this->check_auth_db(); //this->disp will be set if it's true!
     }
     
     /**
@@ -53,6 +61,9 @@ class storms_user {
     public function check_auth() {
         if(isset($_SESSION["user"]) && isset($_SESSION["pass"]) && isset($_SESSION["disp"])) {
             $this->authed = true;
+            $this->user = $_SESSION["user"];
+            $this->pass = $_SESSION["pass"];
+            $this->disp = $_SESSION["disp"];
             return true;
         } else {
             $this->authed = false;
@@ -74,7 +85,7 @@ class storms_user {
         if(mysql_numrows() == 1) {
             //good news, you're in!
             while ($result = mysql_fetch_array($s, MYSQL_BOTH)) {
-                    $this->disp = $result["disName"];
+                $this->disp = $result["disName"];
             }
             $this->set_logged_in();
             $this->login_track(1);
