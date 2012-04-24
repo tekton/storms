@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>storms2 test page</title>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="TextMate http://macromates.com/" />
+	<meta name="author" content="Tyler Agee" />
+	<!-- Date: 2007-07-22 -->
+	<link rel="stylesheet" type="text/css" href="main.css" media="screen" />
+</head>
+<body>
+	
+	
+<div id="container">
+	<form action="index.php" method="POST">
+		<input type="hidden" name="newInput" id="newInput" value="true" />
+	<div class="information">
+		<div class="information_top">&nbsp;information</div>
+		<div class="information_bottom">
+			<!-- Design choice: drop down or fill out for these... -->
+			
+			<div class="cBoth">
+				<div class="cLeft">type</div>
+				<div class="cRight"><input type="text" id="type" name="type" size="10" /></div>
+			</div>
+			
+			
+			<div class="cBoth">
+				<div class="cLeft">in build</div>
+				<div class="cRight"><input type="text" id="in_build" name="in_build" size="10" /></div>
+			</div>
+			
+			<div class="cBoth">
+				<div class="cLeft">resolved in</div>
+				<div class="cRight"><input type="text" id="resolved_in" name="resolved_in" size="10" /></div>
+			</div>
+			
+			<div class="cBoth">
+				<div class="cLeft">pertains to</div>
+				<div class="cRight"><input type="text" id="pertains_to" name="pertains_to" size="10" /></div>
+			</div>
+			
+			<div class="cBoth">
+				<div class="cLeft">parent issue</div>
+				<div class="cRight"><input type="text" id="parent_issue" name="parent_issue" size="10" /></div>
+			</div>
+			<div class="cBoth"><div class="cLeft">project</div><div class="cRight">storms</div></div>
+			
+			<div class="cBoth">&nbsp;</div>
+
+		</div>
+	</div>
+	
+	
+	<div class="issue">
+		<div class="issue_top">&nbsp;<input type="text" id="issue_title" value="title" name="issue_title" size="60" /></div>
+		<div class="issue_content">
+			<textarea name="issue_text" rows="10" cols="60"></textarea>
+		</div>
+	</div>
+	<!--<div class="cBoth">&nbsp;</div>-->
+	
+	<input type="submit">
+	</form>
+</div>
+
+</body>
+</html>

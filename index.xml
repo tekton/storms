@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="issue.xsl"?>
+
+<issue>
+	<id>2</id>
+	<name>Free form pertainsTO is missing</name>
+	<desc>The storms2 code is missing the base functionality of the storms code, namely the multi/free though pertains to code.</desc>
+	<type>feature</type>
+	<inBuild>0001</inBuild>
+	<resolved>0001</resolved>
+	<pertains>gui</pertains>
+	<by>tekton</by>
+	<project>storms</project>
+</issue>

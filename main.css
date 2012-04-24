@@ -1,0 +1,288 @@
+body {
+	font-family: Verdana;
+	font-size: small;
+	/*background-color: #999;*/
+}
+
+input {
+	font-size: small;
+}
+
+.cBoth {
+	clear: both;
+}
+
+.cRight {
+	float: right;
+	text-align: right;
+}
+
+.cLeft {
+	float: left;
+	color: #999;
+}
+
+#container {
+	width: 900px;
+	margin: auto;
+	/*background-color:  #999;*/
+	color: black;
+	/*border: 10px solid black;*/
+}
+
+#container2 {
+	width: 100%;
+	font-size: .1em;
+}
+
+#top {
+	/*nothing special just yet*/
+	/*border:1px black solid;*/
+	width: 900px;
+	margin: auto;
+}
+
+.top_search {
+	display:inline;
+	float: right;
+	padding:10px;
+}
+
+.top_left {
+	padding-top: 16px;
+	padding-left: 20px;
+	float: left;
+}
+
+.top_left a {
+	color: black;
+	text-decoration: none;
+}
+
+.information {
+	float: right;
+	width: 200px;
+	margin-bottom: 10px;
+}
+
+.information_top {
+	background-color: #999;
+	font-weight: bold;
+	color: white;
+	padding: 3px;
+}
+
+.information_bottom {
+	border: 1px solid #ccc;
+	margin: 0px auto 0px auto;
+	padding: 3px;
+	background-color: white;
+}
+
+.issue {
+	width: 600;
+}
+
+.issue a {
+	color: white;
+	text-decoration: none;
+}
+
+.issue_top {
+	background-color: #900;
+	color: white;
+	width: 594px;
+	font-size: small;
+	padding: 6px 3px 6px 3px;
+}
+
+.issue_top a {
+	color: white;
+	text-decoration: none;
+}
+
+.issue_content {
+	background: white;
+	color: black;
+	border-left: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	width: 588px;
+	padding: 5px;
+}
+
+.comment_top {
+	background-color: #09f;
+	color: white;
+	width: 594px;
+	/*margin-left: 51px;*/
+	margin-top: 10px;	
+	margin-bottom: 5px;
+	font-size: small;
+	padding: 3px;
+}
+
+.comment_data {
+	border: 1px solid #ccc;
+	/*margin-left: 51px;*/
+	margin-bottom: 5px;
+	padding: 5px;
+	width: 588px;
+}
+
+.comment_data textarea {
+	width: 100%;
+}
+
+/*The Front Page*/
+
+.fpType {
+	width: 10%;
+	float: left;
+}
+
+.fpBuild {
+	width: 10%;
+	float: right;
+}
+
+.fpDate {
+	width: 20%;
+	float: right;
+}
+
+.fpTitle {
+	width: 40%;
+	float: right;
+	text-align: left;
+}
+
+.fpShortDesc {
+	clear: both;
+	padding: 5px;
+}
+
+.fpBoth {
+	clear: both;
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
+.whiteRow {
+	clear: both;
+	padding: 5px;
+	background-color: white;
+}
+
+.grayRow {
+	clear: both;
+	background-color: #5599ff;
+	padding: 5px;
+}
+
+/*end The Front Page*/
+
+.results td {
+	padding: 10px;
+	border: 1px black solid;
+	font-size: .8em;	
+}
+
+#loginBox {
+	margin: auto;
+	width: 60%;
+	border: 1px black solid;
+	padding: 10px;
+}
+
+#loginBox input {
+	width:  100%;
+}
+
+.redCell {
+	background-color: #900;
+	color: white;
+	padding: 5px;
+}
+
+.blueCell {
+	background-color: #09f;
+	color: white;
+	padding: 5px;
+}
+
+.pm_new_issue input {
+	width: 60%;
+}
+
+.pm_new_issue textarea {
+	width: 60%;
+}
+
+.projects{
+	border-top: 1px solid blue;
+	border-bottom: 1px solid blue;
+}
+
+.project {
+	padding: 10px;
+
+}
+
+.project1 {
+	background-color: #cef;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+
+}
+
+.project0 {
+	background-color: #aaa;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+
+#install_container {
+	width: 600px;
+	margin: auto;
+	text-align: center;
+}
+
+#install_table {
+	text-align: left;
+	width: 100%;
+	border-spacing: 0;
+}
+
+#install_table input {
+	width: 90%;
+}
+
+#install_table td {
+	padding: 5px;
+}
+
+#install_title {
+	padding: 15px;
+	font-size: 300%;
+	font-weight: bold;
+}
+
+/** Installer Cell Colors **/
+.red {background-color: #900;}
+.blue {background-color: #09f;}
+.green {background-color: #3f3;}
+.purple {background-color: #909;}
+.black {background-color: black;}
+/** END: Installer Cell Color **/
+
+#history_top {
+	background-color: #ccc;
+	color:  white;
+	padding: 3px;
+}
+
+#history {
+	padding:  3px;
+	border: 1px #ccc solid;
+}
