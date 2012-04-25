@@ -47,8 +47,13 @@ class storms_users {
         }
     }
     
-    public function traffic($uri) {
-        
+    public function traffic_control($uri) {
+        switch($uri) {
+            case "/json/login":
+                return $this->json_login();
+            default:
+                break;
+        }
     }
 }
 
