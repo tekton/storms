@@ -13,7 +13,7 @@
 class dflt {
 //put your code here
     public function traffic_control() {
-        header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
+        echo "404";
     }
 }
 ?>

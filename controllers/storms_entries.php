@@ -50,13 +50,13 @@ class storms_entries {
     }
     
     function show_all() {
+		debug("show_all", "function");
         $entries = new entries();
         $s = $entries->search("SELECT id, name FROM storms_tdb");
-        while(($result = mysql_fetch_array($s, MYSQL_ASSOC))) {
-            //a_print($result, "result");
-            echo "<div>[s] [e] [m] <a href='../entry/show/".$result["id"]."'>".$result["name"]."</a></div>";
-            //add id and name to xml object...
-        }
+		$entries->create_xml_object("<?xml-stylesheet type='text/xsl' href='../viewers/entries_all.xsl' ?>");
+		
+		global $body;
+		$body = $entries->xml->asXML();
     }
     
     public function traffic_control($uri, $vars) {
@@ -73,11 +73,11 @@ class storms_entries {
             case "/entries/*":
                 if($vars=="all") {
                     //list out all of the entries in a basic way...
-                    echo "show all";
+                    debug("show all", null);
                     $this->show_all();
                 } else {
                     //// ...i have no idea what else i would show...
-                    echo "we got us some variables...";
+                    debug("we got us some variables...", null);
                 }
                 break;
         }

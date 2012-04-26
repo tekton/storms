@@ -10,11 +10,15 @@
     }
     
     function debug($text, $title) {
-        echo "<pre>$title :: ".$text."</pre>";
+		if(DBUG >= 1) {
+        	echo "<pre>$title :: ".$text."</pre>";
+		}
     }
     
     function a_print($array, $title) {
-        echo "<pre>::$title\n"; print_r($array); echo "</pre>";
+        if(DBUG >= 1) {
+			echo "<pre>::$title\n"; print_r($array); echo "</pre>";
+		}
     }
     /*** END FUNCTIONS ***/
 
@@ -36,24 +40,23 @@
     $class = "dflt"; //since default can't be a class
     $vars = "";
     
-    $return_type = "xml"; //defaults to xml, JSON is the other I'm expecting to possibley be used more...
-    
-    $xml_head = "<?xml version=\"1.0\"?>";
+    $return_type = "xml"; //defaults to xml, JSON is the other I'm expecting to possibley be used more...    
+    $xml_head = "<?xml version=\"1.0\"?>";		
     $stylesheet = ""; //basically setting the "view" that will be returned
-    
     $body = "";
     
     /*** END VARIABLES ***/
     
     /**
      *
-     * This isn't pretty, but it does go faster if everything is coded simply in the controllers! 
+     * This isn't pretty, but it does go faster if everything is coded simply in the controllers!
+	 * REMINDER: set the URI_BASE so that its parsed correctly!
      * 
      * TODO: add debug statements!
      * 
      */
     if(array_key_exists($request, $traffic)) {
-        $class = $traffic[$request];
+		$class = $traffic[$request];
     } else {
         //strip it down to /xxxxxx/* and see if that exists...
         $sub_request = preg_split("/\//", $request, 3);
@@ -80,19 +83,17 @@
         $c_load = new $class;
         $c_load->traffic_control($request, $vars);
     } catch(Exception $e) {
-        header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found"); 
+        //header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found"); 
     }
  
-    /*a_print($traffic, $request);
-    debug($class, "class");
-    a_print($c_load, null);
+    //a_print($traffic, $request);
+    //debug($class, "class");
+    //a_print($c_load, null);
     
-    if($return_type == "json") {
-        echo $body;
-    } else {
-        echo $xml_head;
-        echo "<?xml-stylesheet type=\"text/xsl\" href=\"$stylesheet\"?>";
-        echo $body;
-    }*/
-    
+	if($return_type=="xml") {
+		header ("Content-Type:text/xml");
+	} else {
+		header ("Content-Type:application/json");
+	}
+    echo $body;
 ?>
