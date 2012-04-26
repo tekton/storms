@@ -1,6 +1,10 @@
 <?php
 /**
- * Description of storms3_require_classes
+ * In a dev environment this should go through and dynamically add all controllers
+ * 
+ * In a live environment, this should be a compiled file to cut down on 
+ * IO bottle necks since it's most important function is to create the 
+ * traffic mapping from the the global sets in each controller file
  *
  * @author Tyler Agee <tyler@pyroturtle.com>
  */

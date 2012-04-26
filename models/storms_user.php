@@ -56,7 +56,7 @@ class storms_user {
     /**
      *
      * Check session variables for all login variables being accounted for
-     *  
+     *  @return bool And if they are logged in, set the user variables accordingly!
      */
     public function check_auth() {
         if(isset($_SESSION["user"]) && isset($_SESSION["pass"]) && isset($_SESSION["disp"])) {
@@ -82,7 +82,7 @@ class storms_user {
         
         $q = "SELECT disName FROM ".TBLAPREFIX."_users WHERE us3r = '$this->user' AND pazz = '$this->pass'";
         $s = mysql_query($q, $this->db);
-        if(mysql_numrows() == 1) {
+        if(mysql_numrows($s) == 1) {
             //good news, you're in!
             while ($result = mysql_fetch_array($s, MYSQL_BOTH)) {
                 $this->disp = $result["disName"];

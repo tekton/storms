@@ -21,10 +21,18 @@ class storms_users {
      * Expect information to be posted and return a json encoded 
      */
     public function json_login() {
-        if($this->user->auth($_POST["user"], $_POST["pass"]) == true) {
-            return json_encode(array("success" => "true", "disp" => $this->user->disp));
+        echo " ::json_login::";
+        if($_POST) {
+            if($this->user->auth($_POST["user"], $_POST["pass"]) == true) {
+                return json_encode(array("success" => "true", "disp" => $this->user->disp));
+            } else {
+                return json_encode(array("success" => "false"));
+            }
         } else {
-            return json_encode(array("success" => "false"));
+            //error header
+            $tf = $this->user->check_auth();
+            $x = ($tf == true) ? "true": "false";
+            echo " --not get or post...".$x;
         }
     }
     
@@ -56,5 +64,7 @@ class storms_users {
         }
     }
 }
+
+$traffic["/json/login"] = "storms_users";
 
 ?>

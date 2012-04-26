@@ -88,7 +88,7 @@ class Entry {
         $s = mysql_query($q, ConnectDB());
         while($result = mysql_fetch_array($s, MYSQL_BOTH)) {
             $this->tags[$result["name"]] = new Tag();
-            $this->tags[$result["name"]]->setUUID($result["id"]);
+            $this->tags[$result["name"]]->setUUID($result["uuid"]);
         }
     }
 
