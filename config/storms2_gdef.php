@@ -7,6 +7,5 @@
 	define('TBLAPREFIX', 'storms');     // In order to maintain multiple installs
 	
         define('URI_BASE','/storms/branches/storms3'); //Needs to be set per install...
-        
         /*end global variables*/
 ?>
