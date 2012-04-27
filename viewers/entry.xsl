@@ -42,6 +42,19 @@
 			<xsl:for-each select="/entry/tags/tag">
 				<div><xsl:value-of select="@name"/> :: <xsl:value-of select="@value"/></div>
 			</xsl:for-each>
+			<xsl:variable name="id">
+				<xsl:value-of select="/entry/id" />
+			</xsl:variable>	
+			<div id="tag-dialog-form">
+				<form method="post" action="/~tagee/storms/tags/new/{$id}">
+					<input type="hidden" id="id" value="{$id}" name="id" />
+					<table>
+					<tr><td>Name</td><td><input type="text" name="name" id="name"/></td></tr>
+					<tr><td>Value</td><td><input type="text" name="value" id="value"/></td></tr>
+					</table>
+				</form>
+			</div>
+			<button id="add-tag" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">Add Tag</button>
 		</div>
 	</xsl:template>
 	

@@ -46,7 +46,11 @@ class Tag {
         $this->uuid = $uuid;
         $this->getTagFromDBViaUUID();
     }
-    
+
+    function getUUID() {
+		return $this->uuid;
+	}
+
     function set_name($val) {
         $this->name = $val;
         $this->createTableRow();
@@ -57,7 +61,14 @@ class Tag {
         $this->createTableRow();
     }
     function get_value() { return $this->value; }
-    
+
+    function setParentId($parent_id) {
+		$this->parent_id = $parent_id;
+	}
+	function getParentId() {
+		return $this->parent_id;
+	}
+
     /**
      * The basic tag for everything that gets used...will create a basic TableRow for use
      * 
@@ -132,7 +143,7 @@ class Tag {
             \"". mysql_real_escape_string($this->parent_id)."\"
             )";
         $s = mysql_query($q, ConnectDB());
-
+		$this->uuid = mysql_insert_id();
     }
     
     function updateTag() {

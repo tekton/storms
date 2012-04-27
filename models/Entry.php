@@ -84,10 +84,16 @@ class Entry {
      *  TODO: THIS NEEDS A LOT OF WORK 
      */
     public function getBasicTagsFromDB() {
-        $q = "select uuid, name from `".TBLAPREFIX."_tags` where parent_id='".$this->id."'";
+        $q = "select uuid, name from `".TBLAPREFIX."_tags` where parent_id='".$this->id."' order by uuid asc, uuid desc";
         $s = mysql_query($q, ConnectDB());
         while($result = mysql_fetch_array($s, MYSQL_BOTH)) {
-            $this->tags[$result["name"]] = new Tag();
+            //for non-unique tagging which requires a history DB or a "don't show" flag uncomment here
+			/*
+			$x = new Tag();
+			$x->setUUID($result["uuid"]);
+			$this->tags[] = $x;
+			*/
+			$this->tags[$result["name"]] = new Tag();
             $this->tags[$result["name"]]->setUUID($result["uuid"]);
         }
     }
@@ -109,8 +115,9 @@ class Entry {
             
         foreach ($this->tags as $name => $tag) {
             $t = $tags->addChild("tag");
+                //$t->addAttribute("name", $tag->get_name());
                 $t->addAttribute("name", $name);
-                $t->addAttribute("value", $tag->get_value());
+				$t->addAttribute("value", $tag->get_value());
                 //TODO Add a "return as xml" function to Tag
         }
         
