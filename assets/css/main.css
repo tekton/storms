@@ -295,3 +295,8 @@ input {
 #comments_tabs {
 	width:  650px;
 }
+
+/* jQueryUI Customization */
+.ui-tabs .ui-tabs-nav{
+	display: inline-block; width: 99%;	
+}
