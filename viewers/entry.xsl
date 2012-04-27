@@ -39,9 +39,11 @@
 	<xsl:template name="tags">
 		<div id="tags" class="information">
 			<div class="information_top">Tags</div>
-			<xsl:for-each select="/entry/tags/tag">
-				<div><xsl:value-of select="@name"/> :: <xsl:value-of select="@value"/></div>
-			</xsl:for-each>
+			<div id="tags_list">
+				<xsl:for-each select="/entry/tags/tag">
+					<div><xsl:value-of select="@name"/> :: <xsl:value-of select="@value"/></div>
+				</xsl:for-each>
+			</div>
 			<xsl:variable name="id">
 				<xsl:value-of select="/entry/id" />
 			</xsl:variable>	

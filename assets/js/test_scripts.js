@@ -60,6 +60,7 @@ $(document).ready(function(){
                     $.post("/~tagee/storms/tags/new/"+id, {"name": name.val(), "value": value.val()},
                     function(data){
                         //alert(data);
+						$("#tags_list").append("<div class='tag'>"+data["name"]+" :: "+data["value"]+"</div>");
                     });
                     //do what's gotta be done
                     $( this ).dialog( "close" );
