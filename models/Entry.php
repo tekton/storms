@@ -96,8 +96,8 @@ class Entry {
      * XML object functions
      */
     
-    function create_xml_object() {
-        $this->xml = new SimpleXMLElement("<entry></entry>");
+    function create_xml_object($stylesheet="") {
+        $this->xml = new SimpleXMLElement("$stylesheet<entry></entry>");
         
         $main_body = $this->xml->addChild("body", xsl_safe_test($this->body));
         $main_id = $this->xml->addChild("id", xsl_safe_test($this->id));

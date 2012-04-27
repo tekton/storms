@@ -37,8 +37,10 @@ class storms_entries {
         $this->entry->getHistoryFromDB();
         $this->entry->getBasicTagsFromDB();
         //echo "<pre>"; print_r($this->entry); echo "</pre>";
-        $this->entry->create_xml_object();
-        echo $this->entry->xml->asXML();
+			//double back since the basic URL patern /entry/show
+        $this->entry->create_xml_object("<?xml-stylesheet type='text/xsl' href='../../viewers/entry.xsl' ?>");
+        global $body;
+		$body = $this->entry->xml->asXML();
             
     //get the URI for passing to functions...
     //echo "<pre>"; print_r($_SERVER); echo "</pre>";

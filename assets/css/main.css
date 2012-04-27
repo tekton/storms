@@ -112,14 +112,19 @@ input {
 }
 
 .comment_top {
-	background-color: #09f;
-	color: white;
-	width: 594px;
+
+	/*width: 594px;*/
 	/*margin-left: 51px;*/
 	margin-top: 10px;	
-	margin-bottom: 5px;
+	margin-bottom: 0px;
+
+}
+
+.comment_top_data {
+	background-color: #09f;
+	color: white;
 	font-size: small;
-	padding: 3px;
+	padding: 3px;	
 }
 
 .comment_data {
@@ -285,4 +290,8 @@ input {
 #history {
 	padding:  3px;
 	border: 1px #ccc solid;
+}
+
+#comments_tabs {
+	width:  650px;
 }
