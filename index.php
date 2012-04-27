@@ -20,6 +20,15 @@
 			echo "<pre>::$title\n"; print_r($array); echo "</pre>";
 		}
     }
+    
+    function xsl_safe_test(&$string) {
+        //preg strings to make sure that text will output correctly
+        $string = preg_replace('/\&/', '&amp;', $string);
+        $string = preg_replace('/\</', '&lt;', $string);
+        $string = preg_replace('/\>/', '&gt;', $string);
+        return $string;
+    }
+    
     /*** END FUNCTIONS ***/
 
     /*** Session Stuff ***/

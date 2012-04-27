@@ -36,7 +36,7 @@ class storms_entries {
         $this->setEntry();
         $this->entry->getHistoryFromDB();
         $this->entry->getBasicTagsFromDB();
-        echo "<pre>"; print_r($this->entry); echo "</pre>";
+        //echo "<pre>"; print_r($this->entry); echo "</pre>";
         $this->entry->create_xml_object();
         echo $this->entry->xml->asXML();
             
@@ -47,6 +47,7 @@ class storms_entries {
     function migrate() {
         $this->setEntry();
         $this->entry->migrate_to_tags();
+        $this->show();
     }
     
     function show_all() {

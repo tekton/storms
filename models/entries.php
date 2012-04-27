@@ -59,11 +59,10 @@ class entries {
             //a_print($data, "in foreach");
 			$entry = $this->xml->addChild("entry");
 				foreach($data as $key => $tag) {
-					$entry->addChild($key, $tag);
+					$entry->addChild(xsl_safe_test($key), xsl_safe_test($tag));
 				}
         }
     }
-
 }
 
 ?>

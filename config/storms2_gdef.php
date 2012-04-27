@@ -5,7 +5,7 @@
 	define('PASSWORD', 'Blizzard1');    // MySQL password
 	define('HOST', 'localhost');        // location of MySQL server
 	define('TBLAPREFIX', 'storms');     // In order to maintain multiple installs
-	
+	define('DBUG', 0);
         define('URI_BASE','/storms/branches/storms3'); //Needs to be set per install...
         /*end global variables*/
 ?>

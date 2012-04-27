@@ -99,6 +99,10 @@ class Entry {
     function create_xml_object() {
         $this->xml = new SimpleXMLElement("<entry></entry>");
         
+        $main_body = $this->xml->addChild("body", xsl_safe_test($this->body));
+        $main_id = $this->xml->addChild("id", xsl_safe_test($this->id));
+        $main_title = $this->xml->addChild("title", xsl_safe_test($this->name));
+        
         $tags = $this->xml->addChild("tags");
         $comments = $this->xml->addChild("comments");
         $history = $this->xml->addChild("history");
