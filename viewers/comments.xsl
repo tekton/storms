@@ -22,7 +22,7 @@
 				<li><a href="#Combined">Combined</a></li>
 			</ul>
 			<div id="comments">
-				<xsl:for-each select="/entry/comments/comment">
+				<xsl:for-each select="/root/entry/comments/comment">
 					<div>
 						<div class="comment_top"><span class="comment_top_data">(<xsl:value-of select="id" /> :
 						<xsl:value-of select="pertainsTo" />)

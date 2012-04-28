@@ -15,8 +15,11 @@
                     <xsl:value-of select="/root/urlBase/text()" />
             </xsl:variable>
             <link rel="stylesheet" href="{$url}/assets/css/main.css" type="text/css" media="all" />
-            <link rel="stylesheet" href="{$url}/assets/css/start/jquery-ui-1.8.18.custom.css" type="text/css" media="all" />
+            <link rel="stylesheet" href="{$url}/assets/css/custom-theme/jquery-ui-1.8.19.custom.css" type="text/css" media="all" />
             <script src="{$url}/assets/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                var url_base = "<xsl:value-of select="$url"/>";
+            </script>
             <script src="{$url}/assets/js/jquery-ui-1.8.18.custom.min.js" type="text/javascript"></script>
             <script src="{$url}/assets/js/test_scripts.js" type="text/javascript"></script>
 	</xsl:template>

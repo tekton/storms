@@ -32,6 +32,16 @@ class storms_entries {
         }
     }
     
+    function new_entry($vars="") {
+        $stylesheet="../../viewers/entry_new.xsl";
+        //do block out and set things up to send...
+        $this->setEntry();
+        $this->entry->create_xml_object("<?xml-stylesheet type='text/xsl' href='$stylesheet' ?>");
+		$this->entry->xml->addChild("urlBase", URI_BASE);
+        global $body;
+		$body = $this->entry->xml->asXML();
+    }
+    
     function show($stylesheet="../../viewers/entry.xsl") {
         $this->setEntry();
         $this->entry->getHistoryFromDB();
@@ -84,12 +94,16 @@ class storms_entries {
                     debug("we got us some variables...", null);
                 }
                 break;
+            case "/entry/new/*":
+                $this->new_entry($vars);
+                break;
         }
     }
     
 }
 
 $traffic["/entry/"] = "storms_entries";
+$traffic["/entry/new/*"] = "storms_entries";
 $traffic["/entry/show/*"] = "storms_entries"; //individual linking!
 $traffic["/entry/edit/*"] = "storms_entries";
 $traffic["/entry/migrate/*"] = "storms_entries";

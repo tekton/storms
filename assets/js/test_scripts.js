@@ -17,7 +17,7 @@ $(document).ready(function(){
 		var id = $( "#id" ).val();
         $("#tags_list_table").html("");
         $.getJSON(
-            "/~tagee/storms/tags/all/"+id,
+            url_base+"/tags/all/"+id,
             function(data){
                 $.each(data, function(name, val) {
                     append_tag_data(name, val);
@@ -67,7 +67,7 @@ $(document).ready(function(){
                 //add validation for verse, chapter, and book ranges here someday
 
                 if ( bValid ) {
-                    $.post("/~tagee/storms/tags/new/"+id, {"name": name.val(), "value": value.val()},
+                    $.post(url_base+"/tags/new/"+id, {"name": name.val(), "value": value.val()},
                     function(data){
                         //alert(data);
 						//refresh_tag_data(data)

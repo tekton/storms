@@ -136,14 +136,14 @@ class Tag {
      */
     function createTagInDB() {
         //check to see if there's a similar tag with a name and is flagged as unique...
-        
+        $db = ConnectDB();
         $q = "INSERT INTO `".TBLAPREFIX."_tags` (`name`,`value`,`parent_id`) 
             VALUES (\"". mysql_real_escape_string($this->name)."\",
             \"". mysql_real_escape_string($this->value)."\",
             \"". mysql_real_escape_string($this->parent_id)."\"
             )";
-        $s = mysql_query($q, ConnectDB());
-		$this->uuid = mysql_insert_id();
+        $s = mysql_query($q, $db);
+	$this->uuid = mysql_insert_id();
     }
     
     function updateTag() {

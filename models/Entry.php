@@ -47,6 +47,10 @@ class Entry {
         }
     }
     
+    public function newBaseInDB() {
+        
+    }
+    
     public function getBaseFromDB() {
         $q = "select * from `".TBLAPREFIX."_tdb` where id='".$this->id."'";
         $s = mysql_query($q, ConnectDB());

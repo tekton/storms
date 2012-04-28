@@ -1,7 +1,8 @@
 body {
 	font-family: Verdana;
 	font-size: small;
-	/*background-color: #999;*/
+	background-color: black;
+        color: white;
 }
 
 input {
@@ -299,6 +300,7 @@ input {
 	width:650px;
 	border:  1px gray solid;
 	padding: 2px;
+        display: none;
 }
 
 #comments_tabs {
@@ -321,5 +323,6 @@ input {
 
 /* jQueryUI Customization */
 .ui-tabs .ui-tabs-nav{
-	display: inline-block; width: 99%;	
+    font-size: 90%;
+    display: inline-block; width: 99%;	
 }
