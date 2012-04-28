@@ -13,15 +13,15 @@
 	<xsl:template name="histories">
 		<div></div>
 		
-		<p>
+		<div id="histories" class="ui-widget ui-widget-content ui-corner-all">
 			<xsl:for-each select="/entry/history/history">
 				<div>
-					<div><xsl:value-of select="body" /></div>
-					<div class="ui-widget ui-widget-header">
+					<div class="history_top">
 						<span><xsl:value-of select="@id" /></span> :: <xsl:value-of select="posted" /> :: <xsl:value-of select="user" />
 					</div>
+					<div class="history"><xsl:value-of select="body" /></div>
 				</div>
 			</xsl:for-each>
-		</p>		
+		</div>		
 	</xsl:template>
 </xsl:stylesheet>

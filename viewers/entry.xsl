@@ -12,6 +12,7 @@
 	<xsl:include href="./comments.xsl"/>
 	<xsl:include href="./histories.xsl"/>
 	<xsl:include href="./head.xsl"/>
+	<xsl:include href="./nl2br.xsl"/>
 	<xsl:template match="/">
 		<html>
                 <head>
@@ -19,10 +20,12 @@
                         <title>Entry</title>
                 </head>
                 <body>
+					<div id="container">
                         <xsl:call-template name="tags"/>
 						<xsl:call-template name="body"/>
 						<xsl:call-template name="comments"/>
 						<xsl:call-template name="histories"/>
+					</div>
                 </body>
         </html>
 	</xsl:template>
@@ -31,7 +34,9 @@
 		<div>
 			<div class="issue_top">(<xsl:value-of select="/entry/id"/>) <xsl:value-of select="/entry/title"/></div>
 			<div id="body" class="issue">
-				<xsl:value-of select="/entry/body"/>
+				<xsl:call-template name="nl2br">
+                        <xsl:with-param name="string" select="/entry/body/text()" />
+                </xsl:call-template>
 			</div>
 		</div>
 	</xsl:template>

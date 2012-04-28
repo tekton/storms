@@ -27,7 +27,11 @@
 						<div class="comment_top"><span class="comment_top_data">(<xsl:value-of select="id" /> :
 						<xsl:value-of select="pertainsTo" />)
 						<xsl:value-of select="title" /></span></div>
-						<div class="comment_data"><xsl:value-of select="description" /></div>
+						<div class="comment_data">
+							<xsl:call-template name="nl2br">
+			                        <xsl:with-param name="string" select="description/text()" />
+			                </xsl:call-template>
+						</div>
 					</div>
 				</xsl:for-each>
 			</div>

@@ -281,15 +281,22 @@ input {
 .black {background-color: black;}
 /** END: Installer Cell Color **/
 
-#history_top {
+.history_top {
 	background-color: #ccc;
 	color:  white;
-	padding: 3px;
+	padding: 5px;
 }
 
-#history {
-	padding:  3px;
+.history {
+	padding:  5px;
 	border: 1px #ccc solid;
+}
+
+#histories {
+	margin-top: 10px;
+	width:650px;
+	border:  1px gray solid;
+	padding: 2px;
 }
 
 #comments_tabs {
