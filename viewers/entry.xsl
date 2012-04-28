@@ -31,7 +31,7 @@
 	</xsl:template>
 	
 	<xsl:template name="body">
-		<div>
+		<div id="entry" class="ui-widget ui-widget-content ui-corner-all">
 			<div class="issue_top">(<xsl:value-of select="/entry/id"/>) <xsl:value-of select="/entry/title"/></div>
 			<div id="body" class="issue">
 				<xsl:call-template name="nl2br">
@@ -45,12 +45,17 @@
 		<xsl:variable name="url">
 			<xsl:value-of select="/entries/urlBase/text()" />
 		</xsl:variable>
-		<div id="tags" class="information">
+		<div id="tags" class="information ui-widget ui-widget-content">
 			<div class="information_top">Tags</div>
 			<div id="tags_list">
-				<xsl:for-each select="/entry/tags/tag">
-					<div><xsl:value-of select="@name"/> :: <xsl:value-of select="@value"/></div>
-				</xsl:for-each>
+				<table id="tags_list_table">
+					<xsl:for-each select="/entry/tags/tag">
+						<tr class='tag'>
+							<td class='tag'><xsl:value-of select="@name"/></td>
+							<td class='tag'><xsl:value-of select="@value"/></td>
+						</tr>
+					</xsl:for-each>
+				</table>
 			</div>
 			<xsl:variable name="id">
 				<xsl:value-of select="/entry/id" />

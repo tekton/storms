@@ -15,7 +15,7 @@ $(document).ready(function(){
  
      function get_tag_data() {
 		var id = $( "#id" ).val();
-        $("#tags_list").html("");
+        $("#tags_list_table").html("");
         $.getJSON(
             "/~tagee/storms/tags/all/"+id,
             function(data){
@@ -33,7 +33,7 @@ $(document).ready(function(){
 	}
  
 	function append_tag_data(name, val) {
-		$("#tags_list").append("<div class='tag'>"+name+" :: "+val+"</div>");
+		$("#tags_list_table").append("<tr><td class='tag'>"+name+"</td><td>"+val+"</td></tr>");
 	}
 
       function get_verse_data(v_id) {

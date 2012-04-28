@@ -91,9 +91,11 @@ input {
 .issue_top {
 	background-color: #900;
 	color: white;
-	width: 594px;
 	font-size: small;
 	padding: 6px 3px 6px 3px;
+	margin-top: -2px;
+	margin-right: -2px;
+	margin-left: -2px;
 }
 
 .issue_top a {
@@ -301,6 +303,20 @@ input {
 
 #comments_tabs {
 	width:  650px;
+}
+
+#entry {
+	width: 650px;
+	padding: 2px;
+}
+
+#tags {
+	font-size: 90%;
+	width: 240px;
+}
+
+#tags_list_table {
+	font-size: 90%;
 }
 
 /* jQueryUI Customization */
