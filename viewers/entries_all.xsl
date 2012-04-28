@@ -29,9 +29,9 @@
 	
 	<xsl:template name="entries">
 		<xsl:variable name="url">
-			<xsl:value-of select="/entries/urlBase/text()" />
+			<xsl:value-of select="/root/urlBase/text()" />
 		</xsl:variable>
-		<xsl:for-each select="/entries/entry">
+		<xsl:for-each select="/root/entries/entry">
 			<tr>
 				<td><a href="{$url}/entry/show/{id}"><span class="ui-icon ui-icon-search">S</span></a></td>
 				<td><a href="{$url}/entry/migrate/{id}"><span class="ui-icon ui-icon-gear">M</span></a></td>

@@ -103,15 +103,17 @@ class Entry {
      */
     
     function create_xml_object($stylesheet="") {
-        $this->xml = new SimpleXMLElement("$stylesheet<entry></entry>");
+        $this->xml = new SimpleXMLElement("$stylesheet<root></root>");
         
-        $main_body = $this->xml->addChild("body", xsl_safe_test($this->body));
-        $main_id = $this->xml->addChild("id", xsl_safe_test($this->id));
-        $main_title = $this->xml->addChild("title", xsl_safe_test($this->name));
+        $entry = $this->xml->addChild("entry");
         
-        $tags = $this->xml->addChild("tags");
-        $comments = $this->xml->addChild("comments");
-        $history = $this->xml->addChild("history");
+        $main_body = $entry->addChild("body", xsl_safe_test($this->body));
+        $main_id = $entry->addChild("id", xsl_safe_test($this->id));
+        $main_title = $entry->addChild("title", xsl_safe_test($this->name));
+        
+        $tags = $entry->addChild("tags");
+        $comments = $entry->addChild("comments");
+        $history = $entry->addChild("history");
             
         foreach ($this->tags as $name => $tag) {
             $t = $tags->addChild("tag");

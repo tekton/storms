@@ -53,11 +53,11 @@ class entries {
     public function create_xml_object($stylesheet) {
 		//debug("create_xml_object", "function");
 		//a_print($this->return_info, null);
-        $this->xml = new SimpleXMLElement("$stylesheet<entries></entries>");
-            
+        $this->xml = new SimpleXMLElement("$stylesheet<root></root>");
+        $entries = $this->xml->addChild("entries");
         foreach ($this->return_info as $name => $data) {
             //a_print($data, "in foreach");
-			$entry = $this->xml->addChild("entry");
+			$entry = $entries->addChild("entry");
 				foreach($data as $key => $tag) {
 					$entry->addChild(xsl_safe_test($key), xsl_safe_test($tag));
 				}

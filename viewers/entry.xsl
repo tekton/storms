@@ -16,26 +16,26 @@
 	<xsl:template match="/">
 		<html>
                 <head>
-						<xsl:call-template name="scripts"/>
+                        <xsl:call-template name="scripts"/>
                         <title>Entry</title>
                 </head>
                 <body>
-					<div id="container">
+                    <div id="container">
                         <xsl:call-template name="tags"/>
-						<xsl:call-template name="body"/>
-						<xsl:call-template name="comments"/>
-						<xsl:call-template name="histories"/>
-					</div>
+                        <xsl:call-template name="body"/>
+                        <xsl:call-template name="comments"/>
+                        <xsl:call-template name="histories"/>
+                    </div>
                 </body>
         </html>
 	</xsl:template>
 	
 	<xsl:template name="body">
 		<div id="entry" class="ui-widget ui-widget-content ui-corner-all">
-			<div class="issue_top">(<xsl:value-of select="/entry/id"/>) <xsl:value-of select="/entry/title"/></div>
+			<div class="issue_top">(<xsl:value-of select="/root/entry/id"/>) <xsl:value-of select="/root/entry/title"/></div>
 			<div id="body" class="issue">
 				<xsl:call-template name="nl2br">
-                        <xsl:with-param name="string" select="/entry/body/text()" />
+                        <xsl:with-param name="string" select="/root/entry/body/text()" />
                 </xsl:call-template>
 			</div>
 		</div>
@@ -43,13 +43,13 @@
 	
 	<xsl:template name="tags">
 		<xsl:variable name="url">
-			<xsl:value-of select="/entries/urlBase/text()" />
+			<xsl:value-of select="/root/urlBase/text()" />
 		</xsl:variable>
 		<div id="tags" class="information ui-widget ui-widget-content">
 			<div class="information_top">Tags</div>
 			<div id="tags_list">
 				<table id="tags_list_table">
-					<xsl:for-each select="/entry/tags/tag">
+					<xsl:for-each select="/root/entry/tags/tag">
 						<tr class='tag'>
 							<td class='tag'><xsl:value-of select="@name"/></td>
 							<td class='tag'><xsl:value-of select="@value"/></td>
@@ -58,7 +58,7 @@
 				</table>
 			</div>
 			<xsl:variable name="id">
-				<xsl:value-of select="/entry/id" />
+				<xsl:value-of select="/root/entry/id" />
 			</xsl:variable>	
 			<div id="tag-dialog-form" title="Add a tag">
 				<form method="post" action="{$url}/tags/new/{$id}">
