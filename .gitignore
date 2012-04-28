@@ -1,2 +1,6 @@
 /config/storms2_gdef.php
 .htaccess
+
+assets/.DS_Store
+
+.DS_Store
