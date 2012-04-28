@@ -13,19 +13,29 @@ $(document).ready(function(){
         );        
     }
  
-     function get_verses_data() {
-        //$("#verses_linked").html("");
+     function get_tag_data() {
+		var id = $( "#id" ).val();
+        $("#tags_list").html("");
         $.getJSON(
-            "json.php?id="+id+"&type=verses",
+            "/~tagee/storms/tags/all/"+id,
             function(data){
-                $.each(data, function(verse, vals) {
-                    text = vals["book"]+" "+vals["chapter"]+":"+vals["v_start"]+"-"+vals["v_end"];
-                    $("#verses_linked").append("<div class='verse'>"+text+"</div>");
+                $.each(data, function(name, val) {
+                    append_tag_data(name, val);
                 });
             }
         );        
     }
+
+	function refresh_tag_data(data) {
+        $.each(data, function(name, val) {
+            append_tag_data(name, val);
+        });		
+	}
  
+	function append_tag_data(name, val) {
+		$("#tags_list").append("<div class='tag'>"+name+" :: "+val+"</div>");
+	}
+
       function get_verse_data(v_id) {
         //$("#verses_linked").html("");
         $.getJSON(
@@ -60,7 +70,9 @@ $(document).ready(function(){
                     $.post("/~tagee/storms/tags/new/"+id, {"name": name.val(), "value": value.val()},
                     function(data){
                         //alert(data);
-						$("#tags_list").append("<div class='tag'>"+data["name"]+" :: "+data["value"]+"</div>");
+						//refresh_tag_data(data)
+						//append_tag_data(data["name"], data["value"])
+						get_tag_data();
                     });
                     //do what's gotta be done
                     $( this ).dialog( "close" );

@@ -55,7 +55,7 @@
 			<xsl:variable name="id">
 				<xsl:value-of select="/entry/id" />
 			</xsl:variable>	
-			<div id="tag-dialog-form">
+			<div id="tag-dialog-form" title="Add a tag">
 				<form method="post" action="{$url}/tags/new/{$id}">
 					<input type="hidden" id="id" value="{$id}" name="id" />
 					<table>
