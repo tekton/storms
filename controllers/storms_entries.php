@@ -32,13 +32,14 @@ class storms_entries {
         }
     }
     
-    function show() {
+    function show($stylesheet="../../viewers/entry.xsl") {
         $this->setEntry();
         $this->entry->getHistoryFromDB();
         $this->entry->getBasicTagsFromDB();
         //echo "<pre>"; print_r($this->entry); echo "</pre>";
 			//double back since the basic URL patern /entry/show
-        $this->entry->create_xml_object("<?xml-stylesheet type='text/xsl' href='../../viewers/entry.xsl' ?>");
+        $this->entry->create_xml_object("<?xml-stylesheet type='text/xsl' href='$stylesheet' ?>");
+		$this->entry->xml->addChild("urlBase", URI_BASE);
         global $body;
 		$body = $this->entry->xml->asXML();
             
@@ -52,12 +53,12 @@ class storms_entries {
         $this->show();
     }
     
-    function show_all() {
+    function show_all($stylesheet="../viewers/entries_all.xsl") {
 		debug("show_all", "function");
         $entries = new entries();
         $s = $entries->search("SELECT id, name FROM storms_tdb");
-		$entries->create_xml_object("<?xml-stylesheet type='text/xsl' href='../viewers/entries_all.xsl' ?>");
-		
+		$entries->create_xml_object("<?xml-stylesheet type='text/xsl' href='$stylesheet' ?>");
+		$entries->xml->addChild("urlBase", URI_BASE);
 		global $body;
 		$body = $entries->xml->asXML();
     }

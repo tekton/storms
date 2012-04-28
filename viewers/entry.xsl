@@ -42,6 +42,9 @@
 	</xsl:template>
 	
 	<xsl:template name="tags">
+		<xsl:variable name="url">
+			<xsl:value-of select="/entries/urlBase/text()" />
+		</xsl:variable>
 		<div id="tags" class="information">
 			<div class="information_top">Tags</div>
 			<div id="tags_list">
@@ -53,7 +56,7 @@
 				<xsl:value-of select="/entry/id" />
 			</xsl:variable>	
 			<div id="tag-dialog-form">
-				<form method="post" action="/~tagee/storms/tags/new/{$id}">
+				<form method="post" action="{$url}/tags/new/{$id}">
 					<input type="hidden" id="id" value="{$id}" name="id" />
 					<table>
 					<tr><td>Name</td><td><input type="text" name="name" id="name"/></td></tr>

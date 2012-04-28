@@ -37,7 +37,7 @@ class comment {
         $s = mysql_query($q, ConnectDB());
         while($result = mysql_fetch_array($s, MYSQL_BOTH)) {
             $this->title = $result["title"];
-            $this->description = $result["description"];
+            $this->description = stripslashes($result["description"]);
             $this->dateEntered = $result["dateEntered"];
             $this->dateModified = $result["dateModified"];
             $this->visible = $result["visible"];

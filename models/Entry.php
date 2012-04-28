@@ -53,7 +53,7 @@ class Entry {
         while($result = mysql_fetch_array($s, MYSQL_BOTH)) {
             $this->id = $result["id"];
             $this->name = $result["name"];
-            $this->body = $result["description"];
+            $this->body = stripslashes($result["description"]);
             $this->created = $result["dateEntered"];
             $this->user = new Users($result["enteredBy"]);
         }

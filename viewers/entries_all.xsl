@@ -9,22 +9,36 @@
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 	<xsl:output method="html" doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"/>
-
+	<xsl:include href="./head.xsl"/>
+	<xsl:include href="./nl2br.xsl"/>
 	<xsl:template match="/">
 		<html>
-			<div id="container">
-				<xsl:apply-templates/>
-			</div>
+			<head>
+				<title>storms - all entries</title>
+				<xsl:call-template name="scripts"/>
+			</head>
+			<body>
+				<div id="container">
+					<table>
+						<xsl:call-template name="entries"/>
+					</table>
+				</div>
+			</body>
 		</html>
 	</xsl:template>
 	
-	<xsl:template match="/entries/entry" name="entries">
-		<div>
-			[<a href="../entry/show/{id}">S</a>]
-			[<a href="../entry/migrate/{id}">M</a>]
-			[<a href="../entry/edit/{id}">E</a>]
-			<xsl:value-of select="name" />
-		</div>
+	<xsl:template name="entries">
+		<xsl:variable name="url">
+			<xsl:value-of select="/entries/urlBase/text()" />
+		</xsl:variable>
+		<xsl:for-each select="/entries/entry">
+			<tr>
+				<td><a href="{$url}/entry/show/{id}"><span class="ui-icon ui-icon-search">S</span></a></td>
+				<td><a href="{$url}/entry/migrate/{id}"><span class="ui-icon ui-icon-gear">M</span></a></td>
+				<td><a href="{$url}/entry/edit/{id}"><span class="ui-icon ui-icon-wrench">E</span></a></td>
+				<td><xsl:value-of select="name" /></td>
+			</tr>
+		</xsl:for-each>
 	</xsl:template>
 	
 </xsl:stylesheet>
