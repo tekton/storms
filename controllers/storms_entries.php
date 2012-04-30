@@ -35,6 +35,7 @@ class storms_entries {
     function new_entry($vars="") {
         $stylesheet="../../viewers/entry_new.xsl";
         //do block out and set things up to send...
+        $this->id = "";
         $this->setEntry();
         $this->entry->create_xml_object("<?xml-stylesheet type='text/xsl' href='$stylesheet' ?>");
 		$this->entry->xml->addChild("urlBase", URI_BASE);

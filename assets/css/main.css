@@ -64,6 +64,7 @@ input {
 	float: right;
 	width: 200px;
 	margin-bottom: 10px;
+        color: black;
 }
 
 .information_top {
@@ -319,6 +320,7 @@ input {
 
 #tags_list_table {
 	font-size: 90%;
+        color: #333;
 }
 
 /* jQueryUI Customization */

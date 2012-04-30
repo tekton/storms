@@ -17,6 +17,10 @@
 		<html>
                 <head>
                         <xsl:call-template name="scripts"/>
+                        <xsl:variable name="url">
+                            <xsl:value-of select="/root/urlBase/text()" />
+                        </xsl:variable>
+                        <script src="{$url}/assets/js/entry_manipulation.js" type="text/javascript"></script>
                         <title>Entry</title>
                 </head>
                 <body>
@@ -33,13 +37,14 @@
 	<xsl:template name="body">
 		<div id="entry" class="ui-widget ui-widget-content ui-corner-all">
 			<div class="issue_top">
-                            <span class="ui-icon ui-icon-wrench" style="float: left;">E</span>
-                            <span id="title_input_span" style="display:none;">
-                                <input type="text" name="title_input" id="title_input" />
-                            </span>
-                            <span id="entry_title">
-                                <xsl:value-of select="/root/entry/title"/>
-                            </span>
+                            <div class=".cBoth">
+                                <span id="title_edit" class="ui-icon ui-icon-wrench" style="float: left;">E</span>
+                                <span id="title_input_span" style="display:none;">
+                                    <input type="text" name="title_input" id="title_input" style="width: 80%;"/>
+                                </span>
+                                <span id="entry_title_dialog">Click on the wrench to edit and again to save!</span>
+                                <span id="entry_title">&#160;</span>
+                            </div>
                         </div>
 			<div id="body" class="issue">
 				<xsl:call-template name="nl2br">
