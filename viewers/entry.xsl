@@ -44,10 +44,16 @@
                         </div>
                         
                         <div id="body" class="issue">
-                                <span id="post_body" class="ui-icon ui-icon-wrench"/>
-				<xsl:call-template name="nl2br">
-                        <xsl:with-param name="string" select="/root/entry/body/text()" />
-                </xsl:call-template>
+                                <span id="entry_body_edit" class="ui-icon ui-icon-wrench"/>
+				<span id="entry_body">
+                                    <xsl:call-template name="nl2br">
+                                        <xsl:with-param name="string" select="/root/entry/body/text()" />
+                                    </xsl:call-template>
+                                </span>
+                                <span id="entry_body_dialog">&#160;</span>
+                                <span id="entry_body_input_span" style="display:none;">
+                                    <textarea id="entry_body_input" style="width: 80%;"></textarea>
+                                </span>
 			</div>
 		</div>
 	</xsl:template>

@@ -84,7 +84,7 @@ class Entry {
             $updateComment .= "\n\tBody changed from \"$old->name\" to \"$this->name\"";
             //also need to call an "archive" to store old body...
             $this->body = mysql_real_escape_string($this->body);
-            $update_sql[] = "body = '$this->body'";
+            $update_sql[] = "description = '$this->body'";
         }
         
         /*
@@ -101,7 +101,7 @@ class Entry {
                 $sql .= $update_sql[$i];
             }
             $sql .= " where id='".$this->id."'"; //end the sql...
-            $s = mysql_query($sql, $db) or die (mysql_error()); //call it! and die if it fails...
+            $s = mysql_query($sql, $db) or die ("mysql error :: ".mysql_error()); //call it! and die if it fails...
             
             $comment = new comment($this->id);
             $comment->description = $updateComment;
