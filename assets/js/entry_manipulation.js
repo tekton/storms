@@ -83,6 +83,9 @@ $(document).ready(function(){
            if($.trim($("#title_input").val()).length == 0) {
                //do nothing!
            } else {
+               
+               //TODO: check to see if anything actually changed, too...
+               
                //send off the input to update the, or create a new, entry...
                //alert("about to call some json in this here place");
                update_title($("#title_input").val());
