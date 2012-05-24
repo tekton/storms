@@ -19,7 +19,7 @@
 			</head>
 			<body>
 				<div id="container">
-					<table>
+					<table id="main-page-table">
 						<xsl:call-template name="entries"/>
 					</table>
 				</div>

@@ -1,7 +1,8 @@
 body {
 	font-family: Verdana;
 	font-size: small;
-	background-color: black;
+	background-color: #888;
+        
         color: white;
 }
 
@@ -24,11 +25,11 @@ input {
 }
 
 #container {
-	width: 900px;
+	width: 930px;
 	margin: auto;
 	/*background-color:  #999;*/
 	color: black;
-	/*border: 10px solid black;*/
+	/*border: 1px solid red;*/
 }
 
 #container2 {
@@ -82,7 +83,7 @@ input {
 }
 
 .issue {
-	width: 600;
+	width: 600px;
 }
 
 .issue a {
@@ -98,6 +99,9 @@ input {
 	margin-top: -2px;
 	margin-right: -2px;
 	margin-left: -2px;
+        
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
 }
 
 .issue_top a {
@@ -309,8 +313,9 @@ input {
 }
 
 #entry {
-	width: 650px;
-	padding: 2px;
+    width: 650px;
+    padding: 2px;
+    margin-bottom: 10px;
 }
 
 #tags {
@@ -327,4 +332,14 @@ input {
 .ui-tabs .ui-tabs-nav{
     font-size: 90%;
     display: inline-block; width: 99%;	
+}
+
+.ui-widget-content {
+    border: 5px solid #A6C9E2;
+}
+
+#main-page-table {
+    padding: 10px;
+    border-radius: 10px;
+    background: #aaa;
 }
