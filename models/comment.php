@@ -1,4 +1,7 @@
 <?php
+
+require_once(dirname(dirname(__FILE__))."/models/storms_user.php");
+
 /**
  * Description of comment will go here eventually...
  * 
@@ -42,6 +45,39 @@ class comment {
             $this->dateModified = $result["dateModified"];
             $this->visible = $result["visible"];
             $this->user = new Users($result["enteredBy"]);
+        }
+    }
+    
+    public function addToDB() {
+        
+        $db = ConnectDB();
+        
+        $this->user = new storms_user();
+        if($this->user->check_auth() == true) {
+            $this->type = mysql_real_escape_string($this->type);
+            $this->pertainsTo = mysql_real_escape_string($this->pertainsTo);
+            $this->title = mysql_real_escape_string($this->title);
+            $this->description = mysql_real_escape_string($this->description);
+            $this->user = new storms_user();
+                if($this->user->check_auth() == true) {
+                    $q = "INSERT INTO `".TBLAPREFIX."_tdb_comments`
+                            (`pertainsTo`, `title`, `description`, `enteredBy`, `type`)
+                            VALUES
+                            (
+                                \"$this->pertainsTo\",
+                                \"$this->title\",
+                                \"$this->description\",
+                                \"".$this->user->id."\",
+                                \"$this->type\"
+                            )";
+                    
+                    mysql_query($q, $db);
+                    
+                } else {
+                    return false;
+                }
+        } else {
+            return false;
         }
     }
     

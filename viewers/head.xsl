@@ -6,9 +6,10 @@
 -->
 
 <xsl:stylesheet version="1.0"
-                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns="http://www.w3.org/1999/xhtml">
 
-	<xsl:output encoding="UTF-8" indent="yes" method="html" />
+	<xsl:output encoding="UTF-8" indent="yes" method="html" media-type="application/xhtml+xml" />
 
 	<xsl:template name="scripts">
             <xsl:variable name="url">
@@ -26,5 +27,6 @@
             <script src="{$url}/assets/js/test_scripts.js" type="text/javascript"></script>
             
             <script src="{$url}/assets/js/entry_manipulation.js" type="text/javascript"></script>
+            <script src="{$url}/assets/js/login.js" type="text/javascript"></script>
 	</xsl:template>
 </xsl:stylesheet>

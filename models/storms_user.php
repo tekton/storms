@@ -12,6 +12,7 @@ class storms_user {
     public $user;
     public $pass;
     public $disp;
+    public $id;
     
     public $roles;
     
@@ -64,6 +65,7 @@ class storms_user {
             $this->user = $_SESSION["user"];
             $this->pass = $_SESSION["pass"];
             $this->disp = $_SESSION["disp"];
+            $this->id   = $_SESSION["u_id"];
             return true;
         } else {
             $this->authed = false;
@@ -80,12 +82,13 @@ class storms_user {
     public function check_auth_db() {
         $this->db();
         
-        $q = "SELECT disName FROM ".TBLAPREFIX."_users WHERE us3r = '$this->user' AND pazz = '$this->pass'";
+        $q = "SELECT disName, id FROM ".TBLAPREFIX."_users WHERE us3r = '$this->user' AND pazz = '$this->pass'";
         $s = mysql_query($q, $this->db);
         if(mysql_numrows($s) == 1) {
             //good news, you're in!
             while ($result = mysql_fetch_array($s, MYSQL_BOTH)) {
                 $this->disp = $result["disName"];
+                $this->id = $result["id"];
             }
             $this->set_logged_in();
             $this->login_track(1);
@@ -141,6 +144,7 @@ class storms_user {
         $_SESSION["user"] = $this->user;
         $_SESSION["pass"] = $this->pass;
         $_SESSION["disp"] = $this->disp;
+        $_SESSION["u_id"] = $this->id;
         $this->authed = true;
     }
     

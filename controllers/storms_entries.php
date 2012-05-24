@@ -105,10 +105,10 @@ class storms_entries {
                 $rtn_array["success"] = "false";
             }
             $sql = "";
-            $this->entry->updateEntryInDB($sql);
+            $success = $this->entry->updateEntryInDB($sql);
             
             $rtn_array["sql"] = $sql;
-            $rtn_array["success"] = "true";
+            $rtn_array["success"] = $success;
               
         } else {
             //wtf?! return an error of some kind...

@@ -54,6 +54,12 @@ class Entry {
     public function updateEntryInDB(&$sql="") {
         //new state should have been set be controller...
         
+        //Check to see if we're logged in, if not return false!
+        $this->user = new storms_user();
+        if($this->user->check_auth() == false) {
+            return false;
+        }
+        
         $db = ConnectDB();
         
         //compare agains old state
@@ -81,20 +87,28 @@ class Entry {
             $update_sql[] = "body = '$this->body'";
         }
         
+        /*
+         * Check to see if either column is being updated via the comments that would be created!
+         */
         if($updateComment == "") {
             //nothign to do, ho hum
         } else {    
-            $i = 0;
-
-            $sql = "UPDATE `".TBLAPREFIX."_tdb` set ";
+            $sql = "UPDATE `".TBLAPREFIX."_tdb` set "; //the begining of the sql line
             for($i=0; $i < count($update_sql); $i++ ) {
                 if($i > 0) {
-                    $sql .= " , ";
+                    $sql .= " , "; //in case we're updating both columns!
                 }
                 $sql .= $update_sql[$i];
             }
-            $sql .= " where id='".$this->id."'";
-            $s = mysql_query($sql, $db);
+            $sql .= " where id='".$this->id."'"; //end the sql...
+            $s = mysql_query($sql, $db) or die (mysql_error()); //call it! and die if it fails...
+            
+            $comment = new comment($this->id);
+            $comment->description = $updateComment;
+            $comment->type = "System Update";
+            $comment->title = "Entry Updated";
+            $addToDB = $comment->addToDB();
+            
             //check if it was successful, then return value...
         }
     }

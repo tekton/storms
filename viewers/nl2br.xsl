@@ -5,7 +5,7 @@
 		<xsl:choose>
 		<xsl:when test="contains($string,'&#10;')">
 			<xsl:value-of select="substring-before($string,'&#10;')" disable-output-escaping="yes"/>
-			<br/>
+			<br />
 			<xsl:call-template name="nl2br">
 				<xsl:with-param name="string" select="substring-after($string,'&#10;')"/>
 			</xsl:call-template>

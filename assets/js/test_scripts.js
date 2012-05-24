@@ -33,7 +33,7 @@ $(document).ready(function(){
 	}
  
 	function append_tag_data(name, val) {
-		$("#tags_list_table").append("<tr><td class='tag'>"+name+"</td><td>"+val+"</td></tr>");
+            $("#tags_list_table").append("<tr><td class='tag'>"+name+"</td><td>"+val+"</td></tr>");
 	}
 
       function get_verse_data(v_id) {
@@ -45,7 +45,7 @@ $(document).ready(function(){
                 $("#verses_linked").append("<div class='verse'>"+text+"</div>");
             }
         );        
-    }   
+      }   
     ///// Variables for the tag entry diaglog /////
     var id = $( "#id" ).val(),
         name = $( "#name" ),
