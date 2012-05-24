@@ -51,12 +51,62 @@ class Entry {
         
     }
     
+    public function updateEntryInDB(&$sql="") {
+        //new state should have been set be controller...
+        
+        $db = ConnectDB();
+        
+        //compare agains old state
+        $old = new Entry(); //not calling with ID to cut down on DB calls
+        $old->id = $this->id;
+        $old->getBaseFromDB();
+        
+        $updateComment = "";
+        
+        $update_sql = array();
+        
+        //check all of the variables in each to see what's different
+        if($this->name != $old->name) {
+            //add it to the sql that's goign to be coming up...
+            $updateComment .= "\n\tTitle changed from \"$old->name\" to \"$this->name\"";
+            $this->name = mysql_real_escape_string($this->name);
+            $update_sql[] = "name = '$this->name'";
+        }
+        
+        if($this->body != $old->body) {
+            //add it to the sql that's goign to be coming up...
+            $updateComment .= "\n\tBody changed from \"$old->name\" to \"$this->name\"";
+            //also need to call an "archive" to store old body...
+            $this->body = mysql_real_escape_string($this->body);
+            $update_sql[] = "body = '$this->body'";
+        }
+        
+        if($updateComment == "") {
+            //nothign to do, ho hum
+        } else {    
+            $i = 0;
+
+            $sql = "UPDATE `".TBLAPREFIX."_tdb` set ";
+            for($i=0; $i < count($update_sql); $i++ ) {
+                if($i > 0) {
+                    $sql .= " , ";
+                }
+                $sql .= $update_sql[$i];
+            }
+            $sql .= " where id='".$this->id."'";
+            $s = mysql_query($sql, $db);
+            //check if it was successful, then return value...
+        }
+    }
+    
+    /*** Retreival Functions ***/
+    
     public function getBaseFromDB() {
         $q = "select * from `".TBLAPREFIX."_tdb` where id='".$this->id."'";
         $s = mysql_query($q, ConnectDB());
         while($result = mysql_fetch_array($s, MYSQL_BOTH)) {
             $this->id = $result["id"];
-            $this->name = $result["name"];
+            $this->name = stripslashes($result["name"]);
             $this->body = stripslashes($result["description"]);
             $this->created = $result["dateEntered"];
             $this->user = new Users($result["enteredBy"]);

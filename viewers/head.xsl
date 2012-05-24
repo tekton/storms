@@ -24,5 +24,7 @@
             </script>
             <script src="{$url}/assets/js/jquery-ui-1.8.18.custom.min.js" type="text/javascript"></script>
             <script src="{$url}/assets/js/test_scripts.js" type="text/javascript"></script>
+            
+            <script src="{$url}/assets/js/entry_manipulation.js" type="text/javascript"></script>
 	</xsl:template>
 </xsl:stylesheet>

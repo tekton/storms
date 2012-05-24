@@ -74,6 +74,50 @@ class storms_entries {
 		$body = $entries->xml->asXML();
     }
     
+    
+    /**
+     *
+     * @param type $vars Should just be the id...but just in case might as well send it...
+     */
+    function edit_column($vars) {
+        //$this->setEntry(); //gets too much data, lets just do it ourselves...
+        //only really have to worry about json here...
+        
+        $rtn_array = Array();
+        
+        if($_SERVER['REQUEST_METHOD'] == "POST") {
+            //get the column that's being updated...
+            $col = $_POST["column"];
+            //get the value of the new update...
+            $val = $_POST["value"];
+            
+            $this->entry = new Entry();
+            $this->entry->id = $this->id;
+            $this->entry->getBaseFromDB();
+            
+            if($col == "name") {
+                $this->entry->name = $val;
+                $rtn_array["column"] = "name";
+                $rtn_array["value"] = $val;
+            } else if ($col == "body") {
+                $this->entry->body = $val;
+            } else {
+                $rtn_array["success"] = "false";
+            }
+            $sql = "";
+            $this->entry->updateEntryInDB($sql);
+            
+            $rtn_array["sql"] = $sql;
+            $rtn_array["success"] = "true";
+              
+        } else {
+            //wtf?! return an error of some kind...
+            $rtn_array["success"] = "false";
+        }
+        
+        return $rtn_array;
+    }
+    
     public function traffic_control($uri, $vars) {
         //echo "<div>TC URI:: $uri :: $vars</div>";
         switch($uri) {
@@ -97,6 +141,12 @@ class storms_entries {
                 break;
             case "/entry/new/*":
                 $this->new_entry($vars);
+                break;
+            case "/entry/edit/*":
+                $this->id = $vars;
+                global $body, $return_type;
+                $return_type = "json";
+                $body = json_encode($this->edit_column($vars));
                 break;
         }
     }

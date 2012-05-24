@@ -70,9 +70,9 @@ $(document).ready(function(){
                     $.post(url_base+"/tags/new/"+id, {"name": name.val(), "value": value.val()},
                     function(data){
                         //alert(data);
-						//refresh_tag_data(data)
-						//append_tag_data(data["name"], data["value"])
-						get_tag_data();
+                        //refresh_tag_data(data)
+                        //append_tag_data(data["name"], data["value"])
+                        get_tag_data();
                     });
                     //do what's gotta be done
                     $( this ).dialog( "close" );

@@ -32,8 +32,18 @@
 	
 	<xsl:template name="body">
 		<div id="entry" class="ui-widget ui-widget-content ui-corner-all">
-			<div class="issue_top">(<xsl:value-of select="/root/entry/id"/>) <xsl:value-of select="/root/entry/title"/></div>
-			<div id="body" class="issue">
+                        <div class="issue_top">
+                            <div class=".cBoth">
+                                <span id="title_edit" class="ui-icon ui-icon-wrench" style="float: left;">E</span>
+                                <span id="title_input_span" style="display:none;">
+                                    <input type="text" name="title_input" id="title_input" style="width: 80%;" />
+                                </span>
+                                <span id="entry_title_dialog">&#160;</span>
+                                <span id="entry_title"><xsl:value-of select="/root/entry/title"/></span>
+                            </div>
+                        </div>
+                        
+                        <div id="body" class="issue">
 				<xsl:call-template name="nl2br">
                         <xsl:with-param name="string" select="/root/entry/body/text()" />
                 </xsl:call-template>
