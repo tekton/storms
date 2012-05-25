@@ -18,30 +18,12 @@
 				<xsl:call-template name="scripts"/>
 			</head>
 			<body>
-				<div id="container">
-                                    <div id="main-page-top">
-                                        <!-- TODO add login check -->
-                                        <xsl:variable name="url">
-                                                <xsl:value-of select="/root/urlBase/text()" />
-                                        </xsl:variable>
-                                        <div id="tags" class="information ui-widget ui-widget-content">
-                                                <span id="login-btn" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">Login</span>
-                                                <span id="NewEntryButton" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">New Entry</span>
-                                        </div>
-                                        <div id="login-dialog-form" title="Login">
-                                                <form method="post" action="{$url}/json/login">
-                                                        <table>
-                                                            <tr><td>User</td><td><input type="text" name="user" id="user"/></td></tr>
-                                                            <tr><td>Pass</td><td><input type="password" name="pass" id="pass"/></td></tr>
-                                                        </table>
-                                                </form>
-                                        </div>
-                                    </div>
-                                    
+                                
+				<div id="container">      
+                                    <xsl:call-template name="top-bar"/>
                                     <table id="main-page-table">
                                             <xsl:call-template name="entries"/>
                                     </table>
-                                        
 				</div>
 			</body>
 		</html>

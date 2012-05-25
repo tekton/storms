@@ -48,4 +48,9 @@ $(document).ready(function(){
     $( "#NewEntryButton" ).button().click(function(){
         window.location = url_base+"/entry/new";
     });
+    
+    $( "#home" ).button().click(function(){
+        window.location = url_base+"/";
+    });
+    
 });
