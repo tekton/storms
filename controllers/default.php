@@ -12,7 +12,7 @@ class dflt {
     public function traffic_control($uri) {
         if($uri == "/") {
             $d = new storms_entries();
-            $d->show_all("./viewers/entries_all.xsl");
+            $d->show_all("/viewers/entries_all.xsl");
         } else {
             global $traffic, $class, $request, $body;
             $xml = new SimpleXMLElement("<root></root>");
