@@ -44,6 +44,7 @@ class comment {
             $this->dateEntered = $result["dateEntered"];
             $this->dateModified = $result["dateModified"];
             $this->visible = $result["visible"];
+            $this->type = $result["type"];
             $this->user = new Users($result["enteredBy"]);
         }
     }
@@ -70,7 +71,7 @@ class comment {
                                 \"".$this->user->id."\",
                                 \"$this->type\"
                             )";
-                    
+                    $sql = $q;
                     mysql_query($q, $db) or die ("MySQL Error :: ".mysql_error());
                     
                 } else {
@@ -90,6 +91,7 @@ class comment {
         $xml->addChild("dateEntered", $this->dateEntered);
         $xml->addChild("dateModified", $this->dateModified);
         $xml->addChild("visible", $this->visible);
+        $xml->addChild("type", $this->type);
         $xml->addChild("user", $this->user->display_name);
         return $xml;
     }
