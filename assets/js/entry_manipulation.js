@@ -23,6 +23,7 @@ $(document).ready(function(){
             update_title_in_db(title);
         } else {
             new_entry("title", title);
+            set_title_val(title);
         }
     }
     
@@ -42,7 +43,8 @@ $(document).ready(function(){
         if(check_for_id() == true) {
             update_body_in_db("body", body);
         } else {
-            new_entry("body");
+            new_entry("body", body);
+            set_body_val(body);
         }
     }
 
@@ -82,13 +84,17 @@ $(document).ready(function(){
        if($("#title_input_span").is(":visible")) {
            if($.trim($("#title_input").val()).length == 0) {
                //do nothing!
-           } else {
-               
-               //TODO: check to see if anything actually changed, too...
-               
-               //send off the input to update the, or create a new, entry...
-               //alert("about to call some json in this here place");
-               update_title($("#title_input").val());
+           } else {              
+               newTitle = $.trim($("#title_input").val());
+               oldTitle = $("#entry_title").text();
+               if(newTitle == oldTitle) {
+                   //alert("same!");\
+                   //do nothing as nothing has changed!
+               } else {              
+                //send off the input to update the, or create a new, entry...
+                //alert("about to call some json in this here place");
+                update_title($.trim($("#title_input").val()));
+               }
            }
            $("#entry_title").show();
            $("#title_input_span").hide();
@@ -107,7 +113,13 @@ $(document).ready(function(){
            if($.trim($("#entry_body_input").val()).length == 0) {
                //do nothing!
            } else {
-               update_body($("#entry_body_input").val());
+               oldBody = $("#entry_body").text();
+               newBody = $.trim($("#entry_body_input").val());
+               if(oldBody == newBody) {
+                   //nothing changed...
+               } else{
+                update_body($.trim($("#entry_body_input").val()));
+               }
            }
            //as it's been sent off change up the view...
            $("#entry_body_input_span").hide();
@@ -120,8 +132,16 @@ $(document).ready(function(){
        
     });
 
-    function new_entry(type) {
+    function new_entry(type, value) {
         //TODO Whole world of hurt...
+        $.post(url_base+"/entry/new/json", {"column": type, "value": value},
+            function(data){
+                //alert(data.success);
+                //refresh_tag_data(data)
+                //append_tag_data(data["name"], data["value"])
+                $("#id").val(data.id);
+                $("#entry_title_dialog").html("").append("[<a href='"+url_base+"/entry/show/"+data.id+"'>"+data.id+"</a>] ");
+            });
     }
     
 });

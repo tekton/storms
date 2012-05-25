@@ -51,6 +51,25 @@ class Entry {
         
     }
     
+    /**
+     *
+     * Function just creates a new blank entry and returns the ID
+     *  
+     */
+    public function newEntry($name="") {
+        $db = ConnectDB();
+        if ($name == "") {
+            $this->name = "New Entry: ".microtime(true);
+        }
+        else {
+            $this->name = $name;
+        }
+        $this->name = mysql_real_escape_string($this->name);
+        $q = "INSERT INTO `".TBLAPREFIX."_tdb` (name) VALUES ('$this->name')";
+        mysql_query($q, $db) or die ("MySQL Error: ".mysql_error());
+        $this->id = mysql_insert_id($db);
+    }
+    
     public function updateEntryInDB(&$sql="") {
         //new state should have been set be controller...
         
@@ -80,10 +99,18 @@ class Entry {
         }
         
         if($this->body != $old->body) {
-            //TODO add comment about history...
-            //add it to the sql that's goign to be coming up...
-            $updateComment .= "\n\tBody changed from \"$old->body\" to \"$this->body\"";
+            
+            //if the body is null is should mean that a new entry is being generated...or someone was deletion happy
+            // TODO: add condition for if previous histories do have data...
+            if($old->body == "") {
+                $updateComment .= "\nPrevious body was blank, no history generated; most likely due to entry beign created from body not title";
+            } else {
+                $updateComment .= "\n\tBody changed from \"$old->body\" to \"$this->body\"";
+                //TODO add comment about history...
+            }
             //also need to call an "archive" to store old body...
+            
+            //add it to the sql that's goign to be coming up...
             $this->body = mysql_real_escape_string($this->body);
             $update_sql[] = "description = '$this->body'";
         }

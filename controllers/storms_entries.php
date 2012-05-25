@@ -33,17 +33,43 @@ class storms_entries {
     }
     
     function new_entry($vars="") {
-        $stylesheet="../../viewers/entry_new.xsl";
-        //do block out and set things up to send...
-        $this->id = "";
-        $this->setEntry();
-        $this->entry->create_xml_object("<?xml-stylesheet type='text/xsl' href='$stylesheet' ?>");
-		$this->entry->xml->addChild("urlBase", URI_BASE);
-        global $body;
-		$body = $this->entry->xml->asXML();
+        if($vars == "json") {         
+            $rtn_array = Array();
+            $this->entry = new Entry();
+            if($_SERVER['REQUEST_METHOD'] == "POST") {
+                //get the column that's being updated...
+                $col = $_POST["column"];
+                //get the value of the new update...
+                $val = $_POST["value"];
+                if($_POST["column"] == "title") {
+                    $this->entry->newEntry($_POST["value"]);
+                    $this->id = $this->entry->id;
+                } else {
+                    $this->entry->newEntry();
+                    $this->id = $this->entry->id;
+                    $rtn_array["update"] = $this->edit_column($vars);
+                }
+                $rtn_array["id"] = $this->entry->id;
+            }
+            
+            global $body, $return_type;
+                $return_type = "json";
+                $body = json_encode($rtn_array);
+            
+        } else {
+            $stylesheet= URI_BASE."/viewers/entry_new.xsl";
+            //do block out and set things up to send...
+            $this->id = "";
+            $this->setEntry();
+            $this->entry->create_xml_object("<?xml-stylesheet type='text/xsl' href='$stylesheet' ?>");
+                    $this->entry->xml->addChild("urlBase", URI_BASE);
+            global $body;
+                    $body = $this->entry->xml->asXML();
+        }
     }
     
-    function show($stylesheet="../../viewers/entry.xsl") {
+    function show($stylesheet="/viewers/entry.xsl") {
+        $stylesheet = URI_BASE.$stylesheet;
         $this->setEntry();
         $this->entry->getHistoryFromDB();
         $this->entry->getBasicTagsFromDB();
@@ -64,8 +90,9 @@ class storms_entries {
         $this->show();
     }
     
-    function show_all($stylesheet="../viewers/entries_all.xsl") {
-		debug("show_all", "function");
+    function show_all($stylesheet="/viewers/entries_all.xsl") {
+	$stylesheet = URI_BASE.$stylesheet;	
+        debug("show_all", "function");
         $entries = new entries();
         $s = $entries->search("SELECT id, name FROM storms_tdb");
 		$entries->create_xml_object("<?xml-stylesheet type='text/xsl' href='$stylesheet' ?>");
@@ -129,18 +156,23 @@ class storms_entries {
                 $this->id = $vars;
                 $this->migrate();
                 break;
+            case "/entry/":
+                $vars = "all";
             case "/entries/*":
                 if($vars=="all") {
                     //list out all of the entries in a basic way...
                     debug("show all", null);
                     $this->show_all();
                 } else {
-                    //// ...i have no idea what else i would show...
+                    //// ...i have no idea what else i would show...maybe hash compiled searches?
                     debug("we got us some variables...", null);
                 }
                 break;
             case "/entry/new/*":
                 $this->new_entry($vars);
+                break;
+            case "/entry/new":
+                $this->new_entry();
                 break;
             case "/entry/edit/*":
                 $this->id = $vars;
@@ -155,6 +187,7 @@ class storms_entries {
 
 $traffic["/entry/"] = "storms_entries";
 $traffic["/entry/new/*"] = "storms_entries";
+$traffic["/entry/new"] = "storms_entries";
 $traffic["/entry/show/*"] = "storms_entries"; //individual linking!
 $traffic["/entry/edit/*"] = "storms_entries";
 $traffic["/entry/migrate/*"] = "storms_entries";
