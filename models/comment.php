@@ -48,7 +48,7 @@ class comment {
         }
     }
     
-    public function addToDB() {
+    public function addToDB(&$sql="") {
         
         $db = ConnectDB();
         
@@ -71,7 +71,7 @@ class comment {
                                 \"$this->type\"
                             )";
                     
-                    mysql_query($q, $db);
+                    mysql_query($q, $db) or die ("MySQL Error :: ".mysql_error());
                     
                 } else {
                     return false;

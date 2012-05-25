@@ -87,16 +87,17 @@
 				</form>
 			</div>
 			<button id="add-tag" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">Add Tag</button>
+                        <button id="login-btn" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">Login</button>
 		</div>
                 <div id="login-dialog-form" title="Login">
                         <form method="post" action="{$url}/json/login">
                                 <table>
-                                <tr><td>User</td><td><input type="text" name="user" id="user"/></td></tr>
-                                <tr><td>Pass</td><td><input type="text" name="pass" id="pass"/></td></tr>
+                                    <tr><td>User</td><td><input type="text" name="user" id="user"/></td></tr>
+                                    <tr><td>Pass</td><td><input type="password" name="pass" id="pass"/></td></tr>
                                 </table>
                         </form>
                 </div>
-                <button id="login-btn" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">Login</button>
+                
 	</xsl:template>
 	
 </xsl:stylesheet>

@@ -80,8 +80,9 @@ class Entry {
         }
         
         if($this->body != $old->body) {
+            //TODO add comment about history...
             //add it to the sql that's goign to be coming up...
-            $updateComment .= "\n\tBody changed from \"$old->name\" to \"$this->name\"";
+            $updateComment .= "\n\tBody changed from \"$old->body\" to \"$this->body\"";
             //also need to call an "archive" to store old body...
             $this->body = mysql_real_escape_string($this->body);
             $update_sql[] = "description = '$this->body'";
@@ -104,10 +105,12 @@ class Entry {
             $s = mysql_query($sql, $db) or die ("mysql error :: ".mysql_error()); //call it! and die if it fails...
             
             $comment = new comment($this->id);
-            $comment->description = $updateComment;
+            $comment->description = trim($updateComment);
             $comment->type = "System Update";
             $comment->title = "Entry Updated";
             $addToDB = $comment->addToDB();
+            
+            return true;
             
             //check if it was successful, then return value...
         }
