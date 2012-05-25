@@ -340,3 +340,7 @@ input {
     border-radius: 10px;
     background: #aaa;
 }
+
+#main-page-top #tags {
+    padding: 10px;
+}

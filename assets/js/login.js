@@ -44,5 +44,8 @@ $(document).ready(function(){
     
     $( "#login-btn" ).button().click(function() {$( "#login-dialog-form" ).dialog( "open" );});
     /////end tag dialog code/////
-   
+    
+    $( "#NewEntryButton" ).button().click(function(){
+        window.location = url_base+"/entry/new";
+    });
 });
