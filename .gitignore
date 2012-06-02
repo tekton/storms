@@ -1,7 +1,5 @@
 /config/storms2_gdef.php
+/config/storms3_gdef.php
+/config/gdef.php
 .htaccess
-
-assets/.DS_Store
-
 .DS_Store
-/json_testing.html
