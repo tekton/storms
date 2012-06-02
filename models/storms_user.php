@@ -34,8 +34,8 @@ class storms_user {
         $this->authed = false;
         $this->e = null;
         $this->db = null;
-        $this->ip = null;
-        $this->agent = null;
+        $this->ip = $this->get_session_ip(); //$this->ip = null;
+        $this->agent = $_SERVER['HTTP_USER_AGENT'];
         $this->roles = array();
     }
     
@@ -154,13 +154,30 @@ class storms_user {
         }
     }
 
+    function get_session_ip() {
+
+            // mainly used for checking the login IP for trackings sake
+
+            if(!empty($_SERVER['HTTP_CLIENT_IP'])) {
+                    $s_ip = $_SERVER['HTTP_CLIENT_IP'];
+            } 
+            else if(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+                    $s_ip = $_SERVER['HTTP_X_FORWARDED_FOR']; //gah, took long enough to find that it's for proxy use :(
+            } else {
+                    //this is the most common way, but can sometimes be blank...grrrrr
+                    $s_ip = $_SERVER['REMOTE_ADDR'];
+            }
+
+            return $s_ip;
+    }
+    
     public function login_track($success) {
         $this->db();
         $q = "INSERT INTO ".TBLAPREFIX."_login_tracking 
                 (`who`, `attempted_hash`, `attempted_ip`, `browser`, `success`) 
                 VALUES 
                 ('$this->user', '$this->pass', '$this->ip', '".$this->agent."', '$success')";
-        mysql_query($q, $this->db);
+        mysql_query($q, $this->db) or die ("Login tracking error:: ".mysql_error());
         
         //this erroring out doesn't really matter, but once there's logging...
         

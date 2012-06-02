@@ -10,15 +10,15 @@
     }
     
     function debug($text, $title) {
-		if(DBUG >= 1) {
-        	echo "<pre>$title :: ".$text."</pre>";
-		}
+        if(DBUG >= 1) {
+            echo "<pre>$title :: ".$text."</pre>";
+        }
     }
     
     function a_print($array, $title) {
         if(DBUG >= 1) {
-			echo "<pre>::$title\n"; print_r($array); echo "</pre>";
-		}
+            echo "<pre>::$title\n"; print_r($array); echo "</pre>";
+        }
     }
     
     function xsl_safe_test(&$string) {
@@ -65,7 +65,7 @@
      * 
      */
     if(array_key_exists($request, $traffic)) {
-		$class = $traffic[$request];
+        $class = $traffic[$request];
     } else {
         //strip it down to /xxxxxx/* and see if that exists...
         $sub_request = preg_split("/\//", $request, 3);
