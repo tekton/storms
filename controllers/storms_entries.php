@@ -19,6 +19,11 @@ class storms_entries {
         $this->entry = null;
     }
     
+    /**
+     *
+     * Should be overridden for other types like ga, characters, etc
+     * @return boolean 
+     */
     function setEntry() {
         if(isset($this->entry)) {
             return true;
@@ -41,6 +46,10 @@ class storms_entries {
                 $col = $_POST["column"];
                 //get the value of the new update...
                 $val = $_POST["value"];
+                //get the type; if one isn't provided it's just "entry"
+                $type = (empty($_POST['type'])) ? 'entry' : $_POST['type'];
+                $this->entry->type = $type;
+                
                 if($_POST["column"] == "title") {
                     $this->entry->newEntry($_POST["value"]);
                     $this->id = $this->entry->id;

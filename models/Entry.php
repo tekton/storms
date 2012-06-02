@@ -23,6 +23,7 @@ class Entry {
     public $body;
     public $user;
     public $created;
+    public $type;
     
     public $comments;
     public $updates;
@@ -47,6 +48,9 @@ class Entry {
         }
     }
     
+    /**
+     *@deprecated 
+     */
     public function newBaseInDB() {
         
     }
@@ -65,7 +69,7 @@ class Entry {
             $this->name = $name;
         }
         $this->name = mysql_real_escape_string($this->name);
-        $q = "INSERT INTO `".TBLAPREFIX."_tdb` (name) VALUES ('$this->name')";
+        $q = "INSERT INTO `".TBLAPREFIX."_tdb` (name, type) VALUES ('$this->name', '$this->type')";
         mysql_query($q, $db) or die ("MySQL Error: ".mysql_error());
         $this->id = mysql_insert_id($db);
     }
@@ -240,7 +244,11 @@ class Entry {
                 $c->addChild("visible", $comment->visible);
                 $c->addChild("user", $comment->user->display_name);
         }
+        
+        $this->add_extras_to_xml();
     }
+    
+    public function add_extras_to_xml(){}
     
     /****** Migration Functions 
      * 
