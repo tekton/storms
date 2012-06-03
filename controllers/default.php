@@ -3,12 +3,13 @@
 require_once("storms_entries.php");
 
 /**
- * Description of default
+ * Description of dflt
  *
  * @author Tyler Agee <tyler@pyroturtle.com>
  */
 class dflt {
-//put your code here
+	//could be customized per install
+	//todo: find a better/easier way to allo this to change...
     public function traffic_control($uri) {
         if($uri == "/") {
             $d = new storms_entries();

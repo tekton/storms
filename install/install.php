@@ -13,7 +13,7 @@
 	$URI_BASE = $_POST["URI_BASE"];
 	
 	$access_sample = "../.htacess_sample";
-	$config = "../storms2_gdef_sample.php";
+	$config = "../storms_gdef_sample.php";
 	
 	//open sample files and replace as needed!
 

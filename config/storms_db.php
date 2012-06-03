@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set("America/Los_Angeles");
-require_once("storms2_gdef.php");
+require_once("storms_gdef.php");
 
 function ConnectDB($db="", $host="", $user="", $password="") {
 	
@@ -9,8 +9,8 @@ function ConnectDB($db="", $host="", $user="", $password="") {
 	if($user == "") 	{$user = USER;}
 	if($password == "") {$password = PASSWORD;}
 	
-	$g_link = mysql_connect($host, $user, $password) or die('Storms2DB: Could not connect to server.'.mysql_error());
-	mysql_select_db($db, $g_link) or die('Storms2DB: Could not select database :: '.mysql_error());
+	$g_link = mysql_connect($host, $user, $password) or die('storms :: DB: Could not connect to server.'.mysql_error());
+	mysql_select_db($db, $g_link) or die('storms :: DB: Could not select database :: '.mysql_error());
 	return $g_link;
 }
 

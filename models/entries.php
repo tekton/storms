@@ -1,5 +1,5 @@
 <?php
-require_once(dirname(dirname(__FILE__))."/config/storms2_db.php");
+require_once(dirname(dirname(__FILE__))."/config/storms_db.php");
 /**
  * A model that is a collection of Entry objects
  *

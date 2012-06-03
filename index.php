@@ -36,7 +36,7 @@
     /*** END SESSION STUFF ***/
     
     /*** Requires and other misc settings ***/
-    require_once("config/storms3_require_classes.php");
+    require_once("config/storms_require_classes.php");
     register_shutdown_function('fatal_catch');
     /*** END MISC SETTINGS ***/
     

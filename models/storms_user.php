@@ -1,6 +1,6 @@
 <?php
 
-require_once(dirname(dirname(__FILE__))."/config/storms2_db.php");
+require_once(dirname(dirname(__FILE__))."/config/storms_db.php");
 
 /**
  * Model for each user to follow from the storms_users controller

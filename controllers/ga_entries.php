@@ -1,7 +1,7 @@
 <?php
 /* Required as part of the "plugin" */
 
-require_once(dirname(dirname(__FILE__))."/config/storms2_db.php");
+require_once(dirname(dirname(__FILE__))."/config/storms_db.php");
 require_once(dirname(dirname(__FILE__))."/models/GA_Entry.php");
 require_once(dirname(dirname(__FILE__))."/controllers/storms_entries.php");
 
