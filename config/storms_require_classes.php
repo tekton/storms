@@ -9,6 +9,22 @@
  * @author Tyler Agee <tyler@pyroturtle.com>
  */
 
+$ro_dir = dirname(dirname(__FILE__))."/controllers/";
+if(is_dir($ro_dir)) {
+    if($dir = opendir($ro_dir)) {
+        while(($file = readdir($dir)) !== false) {
+            //echo "filename: $file : filetype: " . filetype($ro_dir . $file) . "<br />";
+            if(is_file($ro_dir . $file)) {
+                $file_info = pathinfo($ro_dir . $file);
+                if($file_info["extension"] == "php") {
+                    require_once($ro_dir . $file);
+                }
+            }
+        }
+    }
+}
+/***
+//One of those great ideas that just isn't ready yes for me...while the IO reduction could be nice, the benefit isn't gained all that much given the way PHP caches itself...
 //check for traffic.php
 $filecheck = dirname(dirname(__FILE__))."/traffic.php";
 //if it exists then there's less IO needed to check all of the controllers...
@@ -16,21 +32,6 @@ $filecheck = dirname(dirname(__FILE__))."/traffic.php";
 if(file_exists($filecheck)) {
 	require_once($filecheck);
 } else {
-	$ro_dir = dirname(dirname(__FILE__))."/controllers/";
-	if(is_dir($ro_dir)) {
-	    if($dir = opendir($ro_dir)) {
-	        while(($file = readdir($dir)) !== false) {
-	            //echo "filename: $file : filetype: " . filetype($ro_dir . $file) . "<br />";
-	            if(is_file($ro_dir . $file)) {
-	                $file_info = pathinfo($ro_dir . $file);
-	                if($file_info["extension"] == "php") {
-	                    require_once($ro_dir . $file);
-	                }
-	            }
-	        }
-	    }
-	}
-	
 	//create traffic.php!
 	try {
 		//$stuff = print_r($traffic);
@@ -43,4 +44,5 @@ if(file_exists($filecheck)) {
 		
 	}
 }
+*/
 ?>
