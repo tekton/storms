@@ -24,6 +24,11 @@ class entries {
         $this->return_info = array();
     }
     
+	/**
+	*
+	* The "heart" of this operation; it doesn't care what the columns are as it will just all them all to it's on array and store it
+	* @param $search This function doesn't create sql statements, and if it isn't give one it ill return quickly
+	*/
     public function search($search) {
         if($search == "" || $search == null) {
             //check search and return params?
@@ -55,11 +60,12 @@ class entries {
 		//a_print($this->return_info, null);
         $this->xml = new SimpleXMLElement("$stylesheet<root></root>");
         $entries = $this->xml->addChild("entries");
+		//use the information from $this->search() to create the entries that are needed...
         foreach ($this->return_info as $name => $data) {
             //a_print($data, "in foreach");
 			$entry = $entries->addChild("entry");
 				foreach($data as $key => $tag) {
-					$entry->addChild(xsl_safe_test($key), xsl_safe_test($tag));
+					$entry->addChild(xsl_safe_test($key), xsl_safe_test(stripslashes($tag)));
 				}
         }
     }
