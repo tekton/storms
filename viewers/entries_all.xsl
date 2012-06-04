@@ -18,7 +18,7 @@
 				<xsl:call-template name="scripts"/>
 			</head>
 			<body>
-                                
+                                <div class="default-text">pyroturtle.com darrgotek.com tektonsnow.com</div>
 				<div id="container">      
                                     <xsl:call-template name="top-bar"/>
                                     <table id="main-page-table">

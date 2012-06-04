@@ -349,3 +349,9 @@ input {
     border-radius: 10px;
     border: 2px solid #aaa;
 }
+
+/** Text Emboss Test **/
+.default-text {
+    color: #222;
+    text-shadow: 0px 2px 3px #555;
+}
