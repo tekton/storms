@@ -1,7 +1,7 @@
 body {
-	font-family: Verdana;
+	font-family: Verdana, sans-serif;
 	font-size: small;
-	background-color: #888;
+	background-color: #474747;
         color: white;
 }
 
@@ -352,6 +352,69 @@ input {
 
 /** Text Emboss Test **/
 .default-text {
+    font-size: 3em;
     color: #222;
     text-shadow: 0px 2px 3px #555;
+    font-weight: bold;
+}
+
+#dt a, #dt a:visited {
+    text-decoration: none;
+    color: #222;
+}
+
+.tektonsnow {
+    font-family: 'Courier New', Courier, mono;
+    color: #222;
+}
+
+.pyroturtle {
+    font-family: Trebuchet, sans-serif;
+    font-size: 2.6em;
+    
+}
+
+.pt_green {
+    color: #232;
+}
+.pt_red {
+    color: #322;
+}
+
+/** darrgotek styles **/
+.bodytext {
+    font-size: 14px;
+    font-family: Verdana, Geneva, Arial, sans-serif;
+    background-color: transparent;
+    text-align: center;
+    margin-top: -35px;
+    margin-left: -125px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+    margin: 0px;
+}
+
+.bodytext .headline {
+    font-weight: bold;
+    font-size: 24px
+}
+
+.bodytext a:link, .bodytext a:visited {
+    color: #aaa;
+    text-decoration: none
+}
+
+.bodytext a:hover {
+    color: #06f;
+    text-decoration: none
+}
+
+.bodytext #random_info {
+    color: #222;
+}
+
+.strike {
+    text-decoration: line-through;
 }

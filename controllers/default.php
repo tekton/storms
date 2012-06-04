@@ -11,12 +11,10 @@ class dflt {
 	//could be customized per install
 	//todo: find a better/easier way to allo this to change...
     public function traffic_control($uri) {
-        if($uri == "/") {
-            $d = new storms_entries();
-            $d->show_all("/viewers/entries_all.xsl");
-        } else {
-            global $traffic, $class, $request, $body;
-            $xml = new SimpleXMLElement("<root></root>");
+        global $traffic, $class, $request, $body;
+            $stylesheet= URI_BASE."/viewers/default.xsl";
+            $xml = new SimpleXMLElement("<?xml-stylesheet type='text/xsl' href='$stylesheet' ?><root></root>");
+            $xml->addChild("urlBase", URI_BASE);
             $xml->addChild("class", $class);
             $xml->addChild("request", $request);
             $t = $xml->addChild("traffic");
@@ -24,7 +22,6 @@ class dflt {
                 $t->addChild($loc, $req);
             }
             $body = $xml->asXML();
-        }
     }
 }
 

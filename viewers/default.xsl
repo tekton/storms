@@ -20,11 +20,26 @@
 			<body>
                                 
 				<div id="container">   
-                                    <div class="default-text">pyroturtle.com darrgotek.com tektonsnow.com</div>
-                                    <xsl:call-template name="top-bar"/>
-                                    <table id="main-page-table">
-                                            <xsl:call-template name="entries"/>
-                                    </table>
+                                    
+                                    <div class="bodytext">
+					<div id="dt" class="default-text"><span class="pyroturtle"><span class="pt_red">pyro</span><span class="pt_green">turtle</span>.com</span><br /><!--
+                                        --><a href="http://darrgotek.com/">darrgotek.com</a> |
+                                        <span class="tektonsnow"><a href="http://tektonsnow.com/">TektonSnow.com</a></span></div>
+					<div id="projects">
+						<span><a href="http://darrgotek.com/h1r0">H1R0</a></span> |
+						<span><a href="http://darrgotek.com/ComicRate">ComicRate</a></span> |
+						<span><a href="http://tektonsnow.com/storms">Storms</a></span>
+					</div>
+					<div id="resumes">
+						<span><a href="resumes/TAGEE - Resume - Hybrid.pdf">PDF</a> | <a href="resumes/TAGEE - Resume - Hybrid.doc">Word</a></span>
+					</div>
+					<div id="social_links">
+						<span><a href="http://linkedin.com/in/tyleragee">LinkedIn</a> | <a href="http://github.com/tekton">github</a></span>
+					</div>
+					<div id="random_info">
+						edited with <span class="strike">pico</span> nano
+					</div>
+				</div>
 				</div>
 			</body>
 		</html>

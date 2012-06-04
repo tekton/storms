@@ -65,6 +65,7 @@ class entries {
             //a_print($data, "in foreach");
 			$entry = $entries->addChild("entry");
 				foreach($data as $key => $tag) {
+                                        error_reporting(E_ALL ^ E_STRICT); ///this just got annoying and it didn't want to stop even with assigning to new variables
 					$entry->addChild(xsl_safe_test($key), xsl_safe_test(stripslashes($tag)));
 				}
         }
