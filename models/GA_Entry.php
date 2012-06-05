@@ -21,12 +21,13 @@ class GA_Entry extends Entry {
     }
     
     public function add_extras_to_xml() {
+        echo "add extras overridden!";
         $this->add_verses_to_xml();
         $this->add_notes_to_xml();
     }
     
     function add_verses_to_xml() {
-        
+
     }
     
     function add_notes_to_xml() {
@@ -35,7 +36,7 @@ class GA_Entry extends Entry {
     
     function migrate__set_post_date($datetime) {
         $q = "UPDATE `".TBLAPREFIX."_tdb` set dateEntered='$datetime'";
-        mysql_query($q, COnnectDB("ga"));
+        mysql_query($q, ConnectDB("ga"));
     }
 }
 

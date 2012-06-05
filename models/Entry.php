@@ -158,6 +158,7 @@ class Entry {
             $this->body = stripslashes($result["description"]);
             $this->created = $result["dateEntered"];
             $this->user = new Users($result["enteredBy"]);
+            $this->type = stripslashes($result["type"]);
         }
     }
     
@@ -245,9 +246,16 @@ class Entry {
                 $c->addChild("user", $comment->user->display_name);
         }
         
+        $extras = $this->xml->addChild("extras");
+            $template = $extras->addChild("side");
+            $template->addChild("template", $this->type."_extras_right");
+        
         $this->add_extras_to_xml();
     }
     
+    /**
+     *This is what turns it from "basic" to an "open" structure 
+     */
     public function add_extras_to_xml(){}
     
     /****** Migration Functions 

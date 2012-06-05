@@ -19,7 +19,7 @@
 			</head>
 			<body>       
                             <div class="bodytext">
-                                    <div class="default-text"><span class="pyroturtle"><span class="pt_red">pyro</span><span class="pt_green">turtle</span>.com</span></div>
+                                    <div class="default-text"><span class="pyroturtle">pyro<span class="pt_green">turtle</span>.com</span></div>
                                     <div id="pt_stuff"><a href="ga">graphearithmos</a> | <a href="blog">blog</a></div>
                                     <div id="dt"><a href="http://darrgotek.com/">darrgotek.com</a> |
                                     <span class="tektonsnow"><a href="http://tektonsnow.com/">TektonSnow.com</a></span></div>

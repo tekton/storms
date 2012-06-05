@@ -28,6 +28,9 @@
             
             <script src="{$url}/assets/js/entry_manipulation.js" type="text/javascript"></script>
             <script src="{$url}/assets/js/login.js" type="text/javascript"></script>
+            
+            <script src="{$url}/assets/js/books.js" type="text/javascript"></script>
+            <script src="{$url}/assets/js/ga/verses.js" type="text/javascript"></script>
 	</xsl:template>
         
         <xsl:template name="top-bar">

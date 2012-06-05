@@ -27,7 +27,12 @@
                     <script src="{$url}/assets/js/entry_manipulation.js" type="text/javascript"></script>
                 </head>
                 <body>
-                    <div id="logo">graphe<b>arithmos</b></div>
+                    <div id="logo">
+                        <a>
+                            <xsl:attribute name="href"><xsl:value-of select="/root/urlBase/text()" />/ga/</xsl:attribute> 
+                            graphe<b>arithmos</b>
+                        </a>
+                    </div>
                     <div id="container" class="ui-widget ui-widget-content">
                         <xsl:call-template name="verses"/>
                         <xsl:call-template name="body"/>

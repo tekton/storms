@@ -13,6 +13,7 @@
 	<xsl:include href="./histories.xsl"/>
 	<xsl:include href="./head.xsl"/>
 	<xsl:include href="./nl2br.xsl"/>
+        <xsl:include href="./extras.xsl"/>
 	<xsl:template match="/">
 		<html>
                 <head>
@@ -22,7 +23,10 @@
                 <body>
                     <div id="container">
                         <xsl:call-template name="top-bar"/>
-                        <xsl:call-template name="tags"/>
+                        <div id="tags" class="information ui-widget ui-widget-content">
+                            <xsl:call-template name="tags"/>
+                            <xsl:call-template name="extras_right"/>
+                        </div>
                         <xsl:call-template name="body"/>
                         <xsl:call-template name="comments"/>
                         <xsl:call-template name="histories"/>
@@ -58,12 +62,12 @@
 			</div>
 		</div>
 	</xsl:template>
-	
+        
 	<xsl:template name="tags">
 		<xsl:variable name="url">
 			<xsl:value-of select="/root/urlBase/text()" />
 		</xsl:variable>
-		<div id="tags" class="information ui-widget ui-widget-content">
+		
 			<div class="information_top">Tags</div>
 			<div id="tags_list">
 				<table id="tags_list_table">
@@ -88,7 +92,6 @@
 				</form>
 			</div>
 			<button id="add-tag" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">Add Tag</button>
-		</div>
                 
 	</xsl:template>
 	
