@@ -3,6 +3,7 @@
 
 require_once(dirname(dirname(__FILE__))."/config/storms_db.php");
 require_once(dirname(dirname(__FILE__))."/models/GA_Entry.php");
+require_once(dirname(dirname(__FILE__))."/models/ga_verse.php");
 require_once(dirname(dirname(__FILE__))."/controllers/storms_entries.php");
 
 /*
@@ -30,6 +31,10 @@ class ga_entries extends storms_entries {
         }
     }
 
+    public function add_verse($vars) {
+        
+    }
+    
     public function migrate() {
         //assumes the old DB is ga and the tables are entry, body        
         //get the current data to create the new entries...
@@ -70,6 +75,26 @@ class ga_entries extends storms_entries {
                 $return_type = "json";
                 $body = json_encode($this->edit_column($vars));
                 break;
+            case "/ga/verse/add/*":
+                global $body, $return_type;
+                $return_type = "json";
+                $verse = new ga_verse();
+                    $verse->id = $vars;
+                    $verse->start_book = $_POST["book"];
+                    $verse->start_chapter = $_POST["chapter"];
+                    $verse->start_verse = $_POST["v_start"];
+                    $verse->end_verse = $_POST["v_end"];
+                    $verse->putVerseInDB();
+                $body = json_encode($verse->verse_id);
+                break;
+            case "/ga/verses/*":
+                global $body, $return_type;
+                $return_type = "json";
+                $verse = new ga_verse();
+                    $verse->id = $vars;
+                    $verse->getAllVersesFromDB();
+                $body = $verse->json_array;
+                break;
             case "/ga/migrate":
                 $this->migrate();
                 break;
@@ -87,5 +112,7 @@ $traffic["/ga/new"] = "ga_entries";
 $traffic["/ga/show/*"] = "ga_entries"; //individual linking!
 $traffic["/ga/edit/*"] = "ga_entries";
 $traffic["/ga/all*"] = "ga_entries"; //basically becomes search for basic things...
+$traffic["/ga/verse/add/*"] = "ga_entries";
+$traffic["/ga/verses/*"] = "ga_entries";
 
 ?>
