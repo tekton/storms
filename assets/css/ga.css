@@ -1,0 +1,73 @@
+/* 
+    Document   : ga.css
+    Created on : Apr 18, 2012, 1:11:21 PM
+    Author     : tekton
+    Description:
+        Basic css for testing, etc
+*/
+
+root { 
+    display: block;
+}
+
+body {
+    text-align: center;
+}
+
+#logo {
+    margin: 0 auto;
+    width: 800px;
+    font-family: Trebuchet, sans-serif;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+#container {
+    margin: 0 auto;
+    width: 800px;
+    font-size: 90%;
+    /*border: 1px solid green;*/
+    text-align: left;
+}
+
+#content {
+    width: 497px;
+    padding: 5px;
+    /*border: 1px solid blue;*/
+}
+
+#verses {
+    width: 290px;
+    padding: 5px;
+    float: right;
+    /*border: 1px solid red;*/
+}
+
+#editing {
+    /*width: 645px;*/
+    /*padding: 5px;*/
+    /*border: 1px solid gray;*/
+}
+
+#notes_container {
+    margin-top: 1em;
+}
+
+.p5 {
+    padding: 5px;
+}
+
+.aRight {
+    text-align: right;
+}
+
+.both {
+    clear: both;
+}
+
+span.ui-icon {
+  float:left;
+  margin-bottom:0;
+  margin-right:4px;
+  margin-top:0;
+}
