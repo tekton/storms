@@ -40,6 +40,7 @@ class ga_entries extends storms_entries {
         //get the current data to create the new entries...
         $q = "select entry.id, entry.title, entry.post_date, body.body from entry LEFT JOIN body on body.entry_id = entry.id";
         $s = mysql_query($q, ConnectDB("ga")) or die ("database error ::: ".mysql_error());
+        $sql="";
         while($r = mysql_fetch_array($s, MYSQL_BOTH)) {
             $e = new GA_Entry();
             $e->type = "ga_entry";
@@ -48,6 +49,7 @@ class ga_entries extends storms_entries {
             $e->updateEntryInDB($sql);
             $e->migrate__set_post_date($r["post_date"]);
         }
+        echo $sql;
     }
     
     public function traffic_control($uri, $vars) {
