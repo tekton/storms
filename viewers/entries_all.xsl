@@ -4,11 +4,10 @@
 	Created by TAgee on 2012-04-26.
 	Copyright (c) 2012 Tyler Agee. All rights reserved.
 -->
-
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-	<xsl:output method="html" doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"/>
+	<xsl:output method="html"/><!--  doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" -->
 	<xsl:include href="./head.xsl"/>
 	<xsl:include href="./nl2br.xsl"/>
 	<xsl:template match="/">

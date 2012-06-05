@@ -50,12 +50,13 @@ class ga_entries extends storms_entries {
         switch($uri) {
             case "/ga/show/*":
                 $this->id = $vars;
-                $this->show("/viewers/ga_entry.xsl");
+                $this->show("/viewers/ga/ga_entry.xsl");
                 break;
+            case "/ga":
             case "/ga/":
                 $vars = "all";
-                break;
             case "/ga/all":
+                $this->show_all("/viewers/ga/ga_entries_all.xsl","ga_entry");
                 break;
             case "/ga/new/*":
                 $this->new_entry($vars);
@@ -79,6 +80,7 @@ class ga_entries extends storms_entries {
 
 
 $traffic["/ga/"] = "ga_entries";
+$traffic["/ga"] = "ga_entries";
 $traffic["/ga/migrate"] = "ga_entries";
 $traffic["/ga/new/*"] = "ga_entries";
 $traffic["/ga/new"] = "ga_entries";

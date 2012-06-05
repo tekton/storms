@@ -99,11 +99,13 @@ class storms_entries {
         $this->show();
     }
     
-    function show_all($stylesheet="/viewers/entries_all.xsl") {
-	$stylesheet = URI_BASE.$stylesheet;	
+    function show_all($s="/viewers/entries_all.xsl",$type="") {
+	//global $stylesheet; $stylesheet = ".".$s;
+            $stylesheet = URI_BASE.$s;	
         debug("show_all", "function");
         $entries = new entries();
-        $s = $entries->search("SELECT id, name FROM storms_tdb");
+        $q = "SELECT id, name FROM `".TBLAPREFIX."_tdb`".($type == "" ? "" : " where type='$type'");
+        $s = $entries->search($q);
 		$entries->create_xml_object("<?xml-stylesheet type='text/xsl' href='$stylesheet' ?>");
 		$entries->xml->addChild("urlBase", URI_BASE);
 		global $body;

@@ -101,6 +101,14 @@
     
 	if($return_type=="xml") {
 		header ("Content-Type:text/xml");
+                /*$xslt = new XSLTProcessor();
+                
+                $xslDoc = new DOMDocument();
+                $xslDoc->load($stylesheet);
+                
+                $xslt->importStylesheet($xslDoc);
+                
+                $body = $xslt->transformToXml(new SimpleXMLElement($body));*/
 	} else {
 		header ("Content-Type:application/json");
 	}

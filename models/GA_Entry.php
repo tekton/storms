@@ -14,9 +14,10 @@ class GA_Entry extends Entry {
     
     public $notes;
     
-    function __construct() {
+    function __construct($id="") {
         $this->verses = array();
         $this->notes = array();
+        parent::__construct($id);
     }
     
     public function add_extras_to_xml() {
