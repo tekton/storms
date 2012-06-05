@@ -22,9 +22,14 @@
                     <link rel="stylesheet" href="{$url}/assets/css/start/jquery-ui-1.8.18.custom.css" type="text/css" media="all" />
                     <link rel="stylesheet" href="{$url}/assets/css/ga.css" type="text/css" media="all" />
 
+                    <script type="text/javascript">
+                        var url_base = "<xsl:value-of select="$url"/>";
+                    </script>
+
                     <script src="{$url}/assets/js/jquery-1.7.1.min.js" type="text/javascript"></script>
-                    <script src="{$url}/assets/js/test_scripts.js" type="text/javascript"></script>
-                    <script src="{$url}/assets/js/entry_manipulation.js" type="text/javascript"></script>
+                    
+                    <script src="{$url}/assets/js/ga/verses.js" type="text/javascript"></script>
+                    <script src="{$url}/assets/js/books.js" type="text/javascript"></script>
                 </head>
                 <body>
                     <div id="logo">
@@ -90,6 +95,10 @@
 	</xsl:template>
 	
         <xsl:template name="verses">
+                        <xsl:variable name="id">
+                            <xsl:value-of select="/root/entry/id" />
+			</xsl:variable>	
+                        <input type="hidden" id="id" value="{$id}" name="id" />
             <div id="verses" class="ui-widget">
                 <div class="ui-widget-header p5">Verses</div>
                 <div id="verses_linked" class="ui-widget-content p5"></div>

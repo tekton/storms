@@ -52,51 +52,6 @@ $(document).ready(function(){
                 $("#verses_linked").append("<div class='verse'>"+text+"</div>");
             }
         );        
-    }   
-    
-    ///// Variables for the verse entry diaglog /////
-    var book = $( "#book" ),
-        chapter = $( "#chapter" ),
-        v_start = $( "#v_start" ),
-        v_end = $("#v_end"),
-        allFields = $( [] ).add( book ).add( chapter ).add( v_start ).add(v_end),
-        tips = $( ".validateTips" );
-
-    /////verse entry dialog - mostly taken straight from the jqueryui demo for this feature /////
-    $("#verse-dialog-form").dialog({
-        autoOpen: false,
-        height: 300,
-        width: 500,
-        modal: true,
-        buttons: {
-            "Add Verse": function() {
-                var bValid = true;
-                allFields.removeClass( "ui-state-error" );
-
-                //add validation for verse, chapter, and book ranges here someday
-
-                if ( bValid ) {
-                    var id = $( "#id" ).val();
-                    $.post(url_base+"/ga/verse/add/"+id, {"book": book.val(), "chapter": chapter.val(), "v_start": v_start.val(),"v_end": v_end.val()},
-                    function(data){
-                        //get_verse_data(data);
-                        get_verses_data();
-                    });
-                    //do what's gotta be done
-                    $( this ).dialog( "close" );
-                }
-            },
-            Cancel: function() {
-                    $( this ).dialog( "close" );
-            }
-        },
-        close: function() {
-                allFields.val("").removeClass( "ui-state-error" );
-        }
-    });
-    
-    
-    $( "#add-verse" ).button().click(function() {$( "#verse-dialog-form" ).dialog( "open" );});
-    /////end verse dialog code/////
+    }
 
 });
