@@ -36,7 +36,7 @@ class GA_Entry extends Entry {
     
     function migrate__set_post_date($datetime) {
         $q = "UPDATE `".TBLAPREFIX."_tdb` set dateEntered='$datetime'";
-        mysql_query($q, ConnectDB("ga"));
+        mysql_query($q, ConnectDB());
     }
 }
 

@@ -31,6 +31,7 @@
                                         <xsl:attribute name="href"><xsl:value-of select="/root/urlBase/text()" />/ga/</xsl:attribute> 
                                         graphe<b>arithmos</b>
                                     </a>
+                                    [alpha]
                                 </div>
 				<div id="container" class="ui-widget ui-widget-content">
                                     <table id="main-page-table">
