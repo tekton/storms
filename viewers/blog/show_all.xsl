@@ -18,6 +18,9 @@
 			</head>
 			<body>
 				<div id="container">
+                                    
+                                    <p class="ui-widget ui-state-error ui-corner-all p5">Please note that this part of "storms" is in a pre-alpha state</p>
+                                    
                                     <table id="main-page-table">
                                             <xsl:call-template name="entries"/>
                                     </table>

@@ -22,6 +22,7 @@
                 </head>
                 <body>
                     <div id="container">
+                        <p class="ui-widget ui-state-error ui-corner-all p5">Please note that this part of "storms" is in a pre-alpha state</p>
                         <!--<xsl:call-template name="top-bar"/>-->
                         <div id="tags" class="information ui-widget ui-widget-content">
                             <xsl:call-template name="tags"/>
