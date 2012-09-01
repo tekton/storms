@@ -15,7 +15,7 @@
         }
     }
     
-    function a_print($array, $title) {
+    function a_print($array, $title="") {
         if(DBUG >= 1) {
             echo "<pre>::$title\n"; print_r($array); echo "</pre>";
         }
@@ -53,7 +53,7 @@
     $xml_head = "<?xml version=\"1.0\"?>";		
     $stylesheet = ""; //basically setting the "view" that will be returned
     $body = "";
-    
+
     /*** END VARIABLES ***/
     
     /**
@@ -64,8 +64,11 @@
      * TODO: add debug statements!
      * 
      */
+	debug($request,"request");
+	a_print($traffic,"traffic");
     if(array_key_exists($request, $traffic)) {
         $class = $traffic[$request];
+		debug($class,"the items exists in the array!");
     } else {
         //strip it down to /xxxxxx/* and see if that exists...
         $sub_request = preg_split("/\//", $request, 3);
@@ -98,7 +101,16 @@
     //a_print($traffic, $request);
     //debug($class, "class");
     //a_print($c_load, null);
+
     
+	/*** variable debug ***/
+		$return_type = "html";
+		debug($request, "request");
+		debug($class, "class");
+		debug($vars,"vars");
+		debug($stylesheet,"stylesheet");
+	/*** variable debug ***/
+
 	if($return_type=="xml") {
 		header ("Content-Type:text/xml");
                 /*$xslt = new XSLTProcessor();
@@ -109,7 +121,11 @@
                 $xslt->importStylesheet($xslDoc);
                 
                 $body = $xslt->transformToXml(new SimpleXMLElement($body));*/
-	} else {
+	} else if($return_type == "html") {
+		//header ("Content-Type:text/html");
+		a_print($c_load,"c_load");
+	}
+	else {
 		header ("Content-Type:application/json");
 	}
     echo $body;

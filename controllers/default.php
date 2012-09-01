@@ -25,6 +25,6 @@ class dflt {
     }
 }
 
-$traffic["/trafic"] = "default";
+$traffic["/traffic"] = "default";
 
 ?>
